@@ -1,0 +1,688 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="MLC.Wms.Workflows.Wf_Data.APPROVE_DRIVER"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities"
+ xmlns:mwac="clr-namespace:MLC.WF.Activities.Communication;assembly=MLC.WF.Activities"
+ xmlns:mwad="clr-namespace:MLC.WF.Activities.DataAccess;assembly=MLC.WF.Activities"
+ xmlns:mwam="clr-namespace:MLC.WF.Activities.Manage;assembly=MLC.WF.Activities"
+ xmlns:mwcm="clr-namespace:MLC.WF.Core.Models;assembly=MLC.WF.Core"
+ xmlns:mwme="clr-namespace:MLC.Wms.Model.Entities;assembly=MLC.Wms.Model"
+ xmlns:mwwac="clr-namespace:MLC.Wms.WF.Activities.Communication;assembly=MLC.Wms.WF.Activities"
+ xmlns:n="clr-namespace:NHibernate;assembly=NHibernate"
+ xmlns:s="clr-namespace:System;assembly=mscorlib"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:sle="clr-namespace:System.Linq.Expressions;assembly=System.Core"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="EntityId" Type="InArgument(x:String)" />
+  </x:Members>
+  <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
+  <sap2010:WorkflowViewState.IdRef>MLC.Wms.Workflows.Wf_Data.CLIENT_PIN_CREATE_1_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>MLC.Wms.Model.Entities</x:String>
+      <x:String>MLC.Wms.Common.Helpers</x:String>
+      <x:String>MLC.WF.Core.Models</x:String>
+      <x:String>MLC.WF.Core.Client.Protocol</x:String>
+      <x:String>WebClient.Common.Metamodel.Bindings</x:String>
+      <x:String>MLC.WF.Core</x:String>
+      <x:String>NHibernate</x:String>
+      <x:String>NHibernate.Linq</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Iesi.Collections</AssemblyReference>
+      <AssemblyReference>log4net</AssemblyReference>
+      <AssemblyReference>Microsoft.Activities.Extensions</AssemblyReference>
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>Microsoft.Practices.Unity</AssemblyReference>
+      <AssemblyReference>Microsoft.Practices.Unity.Configuration</AssemblyReference>
+      <AssemblyReference>Microsoft.Practices.Unity.RegistrationByConvention</AssemblyReference>
+      <AssemblyReference>MLC.WF.Activities</AssemblyReference>
+      <AssemblyReference>MLC.WF.Core</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>NHibernate</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>Serialize.Linq</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Activities.DurableInstancing</AssemblyReference>
+      <AssemblyReference>System.Activities.Presentation</AssemblyReference>
+      <AssemblyReference>System.Configuration</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Linq.Dynamic</AssemblyReference>
+      <AssemblyReference>System.Runtime.DurableInstancing</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Web</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>WebClient.Abac</AssemblyReference>
+      <AssemblyReference>WebClient.Common</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>MLC.Wms.Api</AssemblyReference>
+      <AssemblyReference>MLC.Wms.Bootstrap</AssemblyReference>
+      <AssemblyReference>MLC.Wms.Common</AssemblyReference>
+      <AssemblyReference>MLC.Wms.Integration.Common</AssemblyReference>
+      <AssemblyReference>MLC.Wms.Model</AssemblyReference>
+      <AssemblyReference>MLC.Wms.WF.Activities</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>MLC.Wms.Workflows</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Flowchart DisplayName="4926E79E-475E-4EB1-8EB8-C061C2475840" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+    <Flowchart.Variables>
+      <Variable x:TypeArguments="mwme:WmsWorker" Name="entity" />
+      <Variable x:TypeArguments="x:String" Name="actionCode" />
+      <Variable x:TypeArguments="x:String" Name="pinCode" />
+      <Variable x:TypeArguments="x:Boolean" Name="isUnique" />
+      <Variable x:TypeArguments="x:String" Name="criptedPinCode" />
+      <Variable x:TypeArguments="mwme:WmsCustomParamValue" Name="parentCpv" />
+      <Variable x:TypeArguments="scg:List(mwme:WmsWorkerCPV)" Name="cpvList" />
+    </Flowchart.Variables>
+    <Flowchart.StartNode>
+      <FlowStep x:Name="__ReferenceID13" sap2010:WorkflowViewState.IdRef="FlowStep_30">
+        <mwad:SessionScope sap2010:WorkflowViewState.IdRef="SessionScope_4">
+          <Flowchart DisplayName="Удаление CPV" sap2010:WorkflowViewState.IdRef="Flowchart_9">
+            <Flowchart.Variables>
+              <Variable x:TypeArguments="n:ISession" Name="session" />
+              <Variable x:TypeArguments="x:String" Name="variable1" />
+            </Flowchart.Variables>
+            <Flowchart.StartNode>
+              <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_38">
+                <mwad:EntityLinqQuery x:TypeArguments="mwme:WmsWorker" DisplayName="Вычитываем работника" sap2010:WorkflowViewState.IdRef="EntityLinqQuery`1_6" IsNeedCheckExistence="True">
+                  <mwad:EntityLinqQuery.Result>
+                    <OutArgument x:TypeArguments="mwme:WmsWorker">
+                      <mca:CSharpReference x:TypeArguments="mwme:WmsWorker">entity</mca:CSharpReference>
+                    </OutArgument>
+                  </mwad:EntityLinqQuery.Result>
+                  <InArgument x:TypeArguments="sle:Expression(s:Func(mwme:WmsWorker, x:Boolean))">
+                    <mca:CSharpValue x:TypeArguments="sle:Expression(s:Func(mwme:WmsWorker, x:Boolean))">w =&gt; w.WorkerID == Int32.Parse(EntityId)</mca:CSharpValue>
+                  </InArgument>
+                </mwad:EntityLinqQuery>
+                <FlowStep.Next>
+                  <FlowStep x:Name="__ReferenceID1" sap2010:WorkflowViewState.IdRef="FlowStep_37">
+                    <Assign sap2010:WorkflowViewState.IdRef="Assign_3">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="scg:List(mwme:WmsWorkerCPV)">
+                          <mca:CSharpReference x:TypeArguments="scg:List(mwme:WmsWorkerCPV)">cpvList</mca:CSharpReference>
+                        </OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="scg:List(mwme:WmsWorkerCPV)">
+                          <mca:CSharpValue x:TypeArguments="scg:List(mwme:WmsWorkerCPV)">entity.CPV_List.ToList()</mca:CSharpValue>
+                        </InArgument>
+                      </Assign.Value>
+                    </Assign>
+                  </FlowStep>
+                </FlowStep.Next>
+              </FlowStep>
+            </Flowchart.StartNode>
+            <x:Reference>__ReferenceID0</x:Reference>
+            <x:Reference>__ReferenceID1</x:Reference>
+          </Flowchart>
+        </mwad:SessionScope>
+        <FlowStep.Next>
+          <FlowDecision x:Name="__ReferenceID14" sap2010:WorkflowViewState.IdRef="FlowDecision_4">
+            <FlowDecision.Condition>
+              <mca:CSharpValue x:TypeArguments="x:Boolean">cpvList != null &amp;&amp; cpvList.Any(w =&gt; w.CustomParam.CustomParamCode == "IsDriverSecurityChecked" &amp;&amp; w.CPVValue == "1")</mca:CSharpValue>
+            </FlowDecision.Condition>
+            <FlowDecision.True>
+              <FlowStep x:Name="__ReferenceID15" sap2010:WorkflowViewState.IdRef="FlowStep_29">
+                <mwwac:MessageBox DisplayName="Подтверждение" sap2010:WorkflowViewState.IdRef="MessageBox_1" Title="Проверка в СБ">
+                  <mwwac:MessageBox.ActionCode>
+                    <OutArgument x:TypeArguments="x:String">
+                      <mca:CSharpReference x:TypeArguments="x:String">actionCode</mca:CSharpReference>
+                    </OutArgument>
+                  </mwwac:MessageBox.ActionCode>
+                  <mwwac:MessageBox.Actions>
+                    <InArgument x:TypeArguments="mwcm:WfActionsModel">
+                      <mca:CSharpValue x:TypeArguments="mwcm:WfActionsModel" xml:space="preserve">new WfActionsModel()
+            {
+            new WfAction() { Code = "OK", Text = "OK", Glyph = 0xf00c },
+            new WfAction() { Code = "CANCEL", Text = "Отмена", Glyph = 0xf05e }
+            }</mca:CSharpValue>
+                    </InArgument>
+                  </mwwac:MessageBox.Actions>
+                  <mwwac:MessageBox.Message>
+                    <InArgument x:TypeArguments="x:String">
+                      <mca:CSharpValue x:TypeArguments="x:String">"Работник уже подтвержден в СБ.\nУдалить подтверждение?"</mca:CSharpValue>
+                    </InArgument>
+                  </mwwac:MessageBox.Message>
+                </mwwac:MessageBox>
+                <FlowStep.Next>
+                  <FlowDecision x:Name="__ReferenceID17" sap2010:WorkflowViewState.IdRef="FlowDecision_3">
+                    <FlowDecision.Condition>
+                      <mca:CSharpValue x:TypeArguments="x:Boolean">actionCode == "CANCEL"</mca:CSharpValue>
+                    </FlowDecision.Condition>
+                    <FlowDecision.True>
+                      <FlowStep x:Name="__ReferenceID16" sap2010:WorkflowViewState.IdRef="FlowStep_25">
+                        <mwam:Exit sap2010:WorkflowViewState.IdRef="Exit_4" />
+                      </FlowStep>
+                    </FlowDecision.True>
+                    <FlowDecision.False>
+                      <FlowStep x:Name="__ReferenceID18" sap2010:WorkflowViewState.IdRef="FlowStep_28">
+                        <mwad:SessionScope sap2010:WorkflowViewState.IdRef="SessionScope_5">
+                          <Flowchart DisplayName="Удаление CPV" sap2010:WorkflowViewState.IdRef="Flowchart_8">
+                            <Flowchart.Variables>
+                              <Variable x:TypeArguments="n:ISession" Name="session" />
+                              <Variable x:TypeArguments="x:String" Name="variable1" />
+                            </Flowchart.Variables>
+                            <Flowchart.StartNode>
+                              <FlowDecision x:Name="__ReferenceID4" sap2010:WorkflowViewState.IdRef="FlowDecision_5">
+                                <FlowDecision.Condition>
+                                  <mca:CSharpValue x:TypeArguments="x:Boolean" xml:space="preserve">cpvList.Any(w =&gt; w.CustomParam.CustomParamCode != "IsDriverSecurityChecked" 
+            &amp;&amp; w.Parent != null
+            &amp;&amp; w.Parent.CustomParam.CustomParamCode == "CarDriverSett")</mca:CSharpValue>
+                                </FlowDecision.Condition>
+                                <FlowDecision.True>
+                                  <FlowStep x:Name="__ReferenceID5" sap2010:WorkflowViewState.IdRef="FlowStep_34">
+                                    <mwad:EntityDelete x:TypeArguments="mwme:WmsCustomParamValue" Entity="{x:Null}" DisplayName="Удаляем CPV " sap2010:WorkflowViewState.IdRef="EntityDelete`1_2">
+                                      <mwad:EntityDelete.Entities>
+                                        <InArgument x:TypeArguments="scg:IEnumerable(mwme:WmsCustomParamValue)">
+                                          <mca:CSharpValue x:TypeArguments="scg:IEnumerable(mwme:WmsCustomParamValue)">cpvList.Where(w =&gt; w.CustomParam.CustomParamCode == "IsDriverSecurityChecked" &amp;&amp; w.CPVValue == "1")</mca:CSharpValue>
+                                        </InArgument>
+                                      </mwad:EntityDelete.Entities>
+                                    </mwad:EntityDelete>
+                                  </FlowStep>
+                                </FlowDecision.True>
+                                <FlowDecision.False>
+                                  <FlowStep x:Name="__ReferenceID3" sap2010:WorkflowViewState.IdRef="FlowStep_36">
+                                    <Assign sap2010:WorkflowViewState.IdRef="Assign_2">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="mwme:WmsCustomParamValue">
+                                          <mca:CSharpReference x:TypeArguments="mwme:WmsCustomParamValue">parentCpv</mca:CSharpReference>
+                                        </OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="mwme:WmsCustomParamValue">
+                                          <mca:CSharpValue x:TypeArguments="mwme:WmsCustomParamValue">cpvList.Single(w =&gt; w.CustomParam.CustomParamCode == "IsDriverSecurityChecked" &amp;&amp; w.CPVValue == "1").Parent</mca:CSharpValue>
+                                        </InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                    <FlowStep.Next>
+                                      <FlowStep x:Name="__ReferenceID2" sap2010:WorkflowViewState.IdRef="FlowStep_31">
+                                        <mwad:EntityDelete x:TypeArguments="mwme:WmsCustomParamValue" Entity="{x:Null}" DisplayName="Удаляем CPV " sap2010:WorkflowViewState.IdRef="EntityDelete`1_1">
+                                          <mwad:EntityDelete.Entities>
+                                            <InArgument x:TypeArguments="scg:IEnumerable(mwme:WmsCustomParamValue)">
+                                              <mca:CSharpValue x:TypeArguments="scg:IEnumerable(mwme:WmsCustomParamValue)">cpvList.Where(w =&gt; w.CustomParam.CustomParamCode == "IsDriverSecurityChecked" &amp;&amp; w.CPVValue == "1")</mca:CSharpValue>
+                                            </InArgument>
+                                          </mwad:EntityDelete.Entities>
+                                        </mwad:EntityDelete>
+                                        <FlowStep.Next>
+                                          <FlowStep x:Name="__ReferenceID6" sap2010:WorkflowViewState.IdRef="FlowStep_35">
+                                            <mwad:EntityDelete x:TypeArguments="mwme:WmsCustomParamValue" Entities="{x:Null}" DisplayName="Удаляем parentCPV " sap2010:WorkflowViewState.IdRef="EntityDelete`1_3">
+                                              <mwad:EntityDelete.Entity>
+                                                <InArgument x:TypeArguments="mwme:WmsCustomParamValue">
+                                                  <mca:CSharpValue x:TypeArguments="mwme:WmsCustomParamValue">parentCpv</mca:CSharpValue>
+                                                </InArgument>
+                                              </mwad:EntityDelete.Entity>
+                                            </mwad:EntityDelete>
+                                          </FlowStep>
+                                        </FlowStep.Next>
+                                      </FlowStep>
+                                    </FlowStep.Next>
+                                  </FlowStep>
+                                </FlowDecision.False>
+                              </FlowDecision>
+                            </Flowchart.StartNode>
+                            <x:Reference>__ReferenceID2</x:Reference>
+                            <x:Reference>__ReferenceID3</x:Reference>
+                            <x:Reference>__ReferenceID4</x:Reference>
+                            <x:Reference>__ReferenceID5</x:Reference>
+                            <x:Reference>__ReferenceID6</x:Reference>
+                          </Flowchart>
+                        </mwad:SessionScope>
+                        <FlowStep.Next>
+                          <FlowStep x:Name="__ReferenceID11">
+                            <mwac:RequestReload DisplayName="Обновляем форму" sap2010:WorkflowViewState.IdRef="RequestReload_1" />
+                            <sap2010:WorkflowViewState.IdRef>FlowStep_39</sap2010:WorkflowViewState.IdRef>
+                          </FlowStep>
+                        </FlowStep.Next>
+                      </FlowStep>
+                    </FlowDecision.False>
+                  </FlowDecision>
+                </FlowStep.Next>
+              </FlowStep>
+            </FlowDecision.True>
+            <FlowDecision.False>
+              <FlowStep x:Name="__ReferenceID12" sap2010:WorkflowViewState.IdRef="FlowStep_20">
+                <mwad:SessionScope sap2010:WorkflowViewState.IdRef="SessionScope_3">
+                  <Flowchart DisplayName="Сохранение" sap2010:WorkflowViewState.IdRef="Flowchart_7">
+                    <Flowchart.Variables>
+                      <Variable x:TypeArguments="n:ISession" Name="session" />
+                      <Variable x:TypeArguments="mwme:WmsCustomParamValue" Name="cpvParent" />
+                    </Flowchart.Variables>
+                    <Flowchart.StartNode>
+                      <FlowStep x:Name="__ReferenceID8" sap2010:WorkflowViewState.IdRef="FlowStep_24">
+                        <mwad:SessionGet sap2010:WorkflowViewState.IdRef="SessionGet_1">
+                          <mwad:SessionGet.Session>
+                            <OutArgument x:TypeArguments="n:ISession">
+                              <mca:CSharpReference x:TypeArguments="n:ISession">session</mca:CSharpReference>
+                            </OutArgument>
+                          </mwad:SessionGet.Session>
+                        </mwad:SessionGet>
+                        <FlowStep.Next>
+                          <FlowStep x:Name="__ReferenceID10" sap2010:WorkflowViewState.IdRef="FlowStep_33">
+                            <Assign sap2010:WorkflowViewState.IdRef="Assign_1">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="mwme:WmsCustomParamValue">
+                                  <mca:CSharpReference x:TypeArguments="mwme:WmsCustomParamValue">cpvParent</mca:CSharpReference>
+                                </OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="mwme:WmsWorkerCPV">
+                                  <mca:CSharpValue x:TypeArguments="mwme:WmsWorkerCPV" xml:space="preserve">new WmsWorkerCPV()
+            {
+                WORKER = entity,
+                EntityName = "WORKER",
+                CustomParam = session.Query&lt;WmsCustomParam&gt;().Single(w =&gt; w.CustomParamCode == "CarDriverSett")
+            }</mca:CSharpValue>
+                                </InArgument>
+                              </Assign.Value>
+                            </Assign>
+                            <FlowStep.Next>
+                              <FlowStep x:Name="__ReferenceID9" sap2010:WorkflowViewState.IdRef="FlowStep_32">
+                                <mwad:EntityAdd Entities="{x:Null}" DisplayName="добавляем CPV CarDriverSett" sap2010:WorkflowViewState.IdRef="EntityAdd_2">
+                                  <mwad:EntityAdd.Entity>
+                                    <InArgument x:TypeArguments="x:Object">
+                                      <mca:CSharpValue x:TypeArguments="x:Object">cpvParent</mca:CSharpValue>
+                                    </InArgument>
+                                  </mwad:EntityAdd.Entity>
+                                </mwad:EntityAdd>
+                                <FlowStep.Next>
+                                  <FlowStep x:Name="__ReferenceID7" sap2010:WorkflowViewState.IdRef="FlowStep_22">
+                                    <mwad:EntityAdd Entities="{x:Null}" DisplayName="добавляем CPV IsDriverSecurityChecked" sap2010:WorkflowViewState.IdRef="EntityAdd_1">
+                                      <mwad:EntityAdd.Entity>
+                                        <InArgument x:TypeArguments="x:Object">
+                                          <mca:CSharpValue x:TypeArguments="x:Object" xml:space="preserve">new WmsWorkerCPV()
+            {
+              CPVValue = "1",
+              WORKER = entity,
+              EntityName = "WORKER",
+              Parent = cpvParent,
+              CustomParam = session.Query&lt;WmsCustomParam&gt;().Single(w =&gt; w.CustomParamCode == "IsDriverSecurityChecked")
+            }</mca:CSharpValue>
+                                        </InArgument>
+                                      </mwad:EntityAdd.Entity>
+                                    </mwad:EntityAdd>
+                                  </FlowStep>
+                                </FlowStep.Next>
+                              </FlowStep>
+                            </FlowStep.Next>
+                          </FlowStep>
+                        </FlowStep.Next>
+                      </FlowStep>
+                    </Flowchart.StartNode>
+                    <x:Reference>__ReferenceID7</x:Reference>
+                    <x:Reference>__ReferenceID8</x:Reference>
+                    <x:Reference>__ReferenceID9</x:Reference>
+                    <x:Reference>__ReferenceID10</x:Reference>
+                  </Flowchart>
+                </mwad:SessionScope>
+                <FlowStep.Next>
+                  <x:Reference>__ReferenceID11</x:Reference>
+                </FlowStep.Next>
+              </FlowStep>
+            </FlowDecision.False>
+          </FlowDecision>
+        </FlowStep.Next>
+      </FlowStep>
+    </Flowchart.StartNode>
+    <x:Reference>__ReferenceID12</x:Reference>
+    <x:Reference>__ReferenceID13</x:Reference>
+    <x:Reference>__ReferenceID14</x:Reference>
+    <x:Reference>__ReferenceID15</x:Reference>
+    <x:Reference>__ReferenceID16</x:Reference>
+    <x:Reference>__ReferenceID17</x:Reference>
+    <x:Reference>__ReferenceID18</x:Reference>
+    <x:Reference>__ReferenceID11</x:Reference>
+    <sads:DebugSymbol.Symbol>d2ZDOlxnaXRQcm9qZWN0c1xNTEMuV21zLldlYkFwcFxzcmNcTUxDLldtc1xNTEMuV21zLldvcmtmbG93c1xXZl9EYXRhXENMSUVOVCRBUFBST1ZFX0RSSVZFUiQxLjAuMC4wLnhhbWwpWQPlAg8CAQFlCYwBHQMBuAGQAQ+QAdUBAwGvAYoCEdICJQIBcv4BHf4BgwECAXGUARGoASQCAVSsAResAWwCAUu1ARn7AS0CAQOwARmwAU8CAQJmC4sBFwMBuQGLAhPRAh8CAXOXAReXAWcCAWilARelAY0BAgFfnAEXoAEgAgFWlAF0lAGDAQIBVbYBG/oBJwIBBG0RdigDAdEBeRWEAR4DAboBkgIZmAIrAwGjAZsCHasCJgMBjAGuAiG0AjIDAYABtwIlxAI2AgF0vgEjwAFiAgFAzwEl2gEuAgEp3QEp4wE9AgEd5gEt7AFBAgERxAElygE5AgEFcBdwaQMB3QF0FXSnAQMB0gGBARuBAYQBAwHGAXwbfHsDAbsBlQIflQJuAwGkAaMCI6gCIAMBmAGeAiOeAoIBAwGNAbECJ7ECbgMBgQG6AivBAiACAXXXASvXAe8BAgE10gEr0gGKAQIBKuABL+AB/AECAR7pATPpAYoBAgESxwErxwH4AQIBBg==</sads:DebugSymbol.Symbol>
+  </Flowchart>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="EntityLinqQuery`1_6" sap:VirtualizedContainerService.HintSize="325,88">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_3" sap:VirtualizedContainerService.HintSize="242,62">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_37">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">169,309</av:Point>
+            <av:Size x:Key="ShapeSize">242,62</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_38">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">122.565,156.0390625</av:Point>
+            <av:Size x:Key="ShapeSize">325,88</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">285.065,244.0390625 285.065,274.0390625 290,274.0390625 290,309</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Flowchart_9" sap:VirtualizedContainerService.HintSize="614,677">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <av:Point x:Key="ShapeLocation">240,12.5</av:Point>
+            <av:Size x:Key="ShapeSize">60,75</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">270,87.5 270,117.5 285.065,117.5 285.065,156.0390625</av:PointCollection>
+            <x:Double x:Key="Height">641</x:Double>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="SessionScope_4" sap:VirtualizedContainerService.HintSize="640,765">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="MessageBox_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="Exit_4" sap:VirtualizedContainerService.HintSize="200,22">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_25">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">40,1409</av:Point>
+            <av:Size x:Key="ShapeSize">200,22</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="EntityDelete`1_2" sap:VirtualizedContainerService.HintSize="200,22">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_34">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">70,369</av:Point>
+            <av:Size x:Key="ShapeSize">200,22</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_2" sap:VirtualizedContainerService.HintSize="242,62">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="EntityDelete`1_1" sap:VirtualizedContainerService.HintSize="200,22">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="EntityDelete`1_3" sap:VirtualizedContainerService.HintSize="200,22">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_35">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">360,519</av:Point>
+            <av:Size x:Key="ShapeSize">200,22</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_31">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">360,459</av:Point>
+            <av:Size x:Key="ShapeSize">200,22</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">460,481 460,519</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_36">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">339,359</av:Point>
+            <av:Size x:Key="ShapeSize">242,62</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">460,421 460,459</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowDecision_5" sap:VirtualizedContainerService.HintSize="70,87">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <av:Point x:Key="ShapeLocation">235,236.5</av:Point>
+            <av:Size x:Key="ShapeSize">70,87</av:Size>
+            <av:PointCollection x:Key="TrueConnector">235,280 170,280 170,369</av:PointCollection>
+            <av:PointCollection x:Key="FalseConnector">305,280 460,280 460,359</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Flowchart_8" sap:VirtualizedContainerService.HintSize="614,677">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <av:Point x:Key="ShapeLocation">240,12.5</av:Point>
+            <av:Size x:Key="ShapeSize">60,75</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">270,87.5 270,236.5</av:PointCollection>
+            <x:Double x:Key="Height">641</x:Double>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="SessionScope_5" sap:VirtualizedContainerService.HintSize="640,765">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="RequestReload_1" sap:VirtualizedContainerService.HintSize="200,22">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_39">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">874,2211.96</av:Point>
+            <av:Size x:Key="ShapeSize">200,22</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">974,2233.96 974,2296.96</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_28">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">97,1568</av:Point>
+            <av:Size x:Key="ShapeSize">640,765</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">737,1950.5 974,1950.5 974,2211.96</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowDecision_3" sap:VirtualizedContainerService.HintSize="70,87">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <av:Point x:Key="ShapeLocation">275,1276.5</av:Point>
+            <av:Size x:Key="ShapeSize">70,87</av:Size>
+            <av:PointCollection x:Key="TrueConnector">275,1320 140,1320 140,1409</av:PointCollection>
+            <av:PointCollection x:Key="FalseConnector">345,1320 417,1320 417,1568</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_29">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">210,1189</av:Point>
+            <av:Size x:Key="ShapeSize">200,22</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">310,1211 310,1276.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="SessionGet_1" sap:VirtualizedContainerService.HintSize="200,22">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="242,62">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="EntityAdd_2" sap:VirtualizedContainerService.HintSize="200,62">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="EntityAdd_1" sap:VirtualizedContainerService.HintSize="745,166">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_22">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">20,439</av:Point>
+            <av:Size x:Key="ShapeSize">745,166</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">450,741 450,776.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_32">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">300,299</av:Point>
+            <av:Size x:Key="ShapeSize">200,62</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">400,361 400,391 391.5,391 391.5,439</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_33">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">268.895,171</av:Point>
+            <av:Size x:Key="ShapeSize">242,62</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">389.895,233 389.895,263 400,263 400,299</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_24">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">290,109</av:Point>
+            <av:Size x:Key="ShapeSize">200,22</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">390,131 390,161 389.895,161 389.895,171</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Flowchart_7" sap:VirtualizedContainerService.HintSize="786,649">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <av:Point x:Key="ShapeLocation">360,12.5</av:Point>
+            <av:Size x:Key="ShapeSize">60,75</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">390,87.5 390,109</av:PointCollection>
+            <x:Double x:Key="Width">772</x:Double>
+            <x:Double x:Key="Height">613</x:Double>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="SessionScope_3" sap:VirtualizedContainerService.HintSize="812,737">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_20">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">1037,1198</av:Point>
+            <av:Size x:Key="ShapeSize">812,737</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">1443,1935 1443,2222.96 1074,2222.96</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowDecision_4" sap:VirtualizedContainerService.HintSize="70,87">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <av:Point x:Key="ShapeLocation">695,1086.5</av:Point>
+            <av:Size x:Key="ShapeSize">70,87</av:Size>
+            <av:PointCollection x:Key="TrueConnector">695,1130 310,1130 310,1189</av:PointCollection>
+            <av:PointCollection x:Key="FalseConnector">765,1130 1443,1130 1443,1198</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_30">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">466,202</av:Point>
+            <av:Size x:Key="ShapeSize">640,765</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">786,967 786,997 730,997 730,1086.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Flowchart_1" sap:VirtualizedContainerService.HintSize="1863,2369">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <av:Point x:Key="ShapeLocation">690,32.5</av:Point>
+            <av:Size x:Key="ShapeSize">60,75</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">720,107.5 720,137.5 786,137.5 786,202</av:PointCollection>
+            <x:Double x:Key="Height">2333</x:Double>
+            <x:Double x:Key="Width">1849</x:Double>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="MLC.Wms.Workflows.Wf_Data.CLIENT_PIN_CREATE_1_1" sap:VirtualizedContainerService.HintSize="1903,2449" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

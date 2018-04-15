@@ -1,0 +1,656 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="MLC.Wms.Workflows.Wf_Data.ADDVEHICLE"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities"
+ xmlns:mwac="clr-namespace:MLC.WF.Activities.Communication;assembly=MLC.WF.Activities"
+ xmlns:mwad="clr-namespace:MLC.WF.Activities.DataAccess;assembly=MLC.WF.Activities"
+ xmlns:mwam="clr-namespace:MLC.WF.Activities.Manage;assembly=MLC.WF.Activities"
+ xmlns:mwcm="clr-namespace:MLC.WF.Core.Models;assembly=MLC.WF.Core"
+ xmlns:mwme="clr-namespace:MLC.Wms.Model.Entities;assembly=MLC.Wms.Model"
+ xmlns:n="clr-namespace:NHibernate;assembly=NHibernate"
+ xmlns:s="clr-namespace:System;assembly=mscorlib"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:wcmb="clr-namespace:WebClient.Common.Metamodel.Bindings;assembly=WebClient.Common"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="InitString" Type="InArgument(x:String)" />
+  </x:Members>
+  <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
+  <sap2010:WorkflowViewState.IdRef>MLC.Wms.Workflows.Wf_Data.ADDCARDRIVER_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>WebClient.Common.Metamodel.Bindings</x:String>
+      <x:String>MLC.WF.Core.Client.Protocol</x:String>
+      <x:String>MLC.WF.Core.Models</x:String>
+      <x:String>MLC.Wms.Model.Entities</x:String>
+      <x:String>NHibernate</x:String>
+      <x:String>NHibernate.Linq</x:String>
+      <x:String>MLC.WF.Core</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Iesi.Collections</AssemblyReference>
+      <AssemblyReference>log4net</AssemblyReference>
+      <AssemblyReference>Microsoft.Activities.Extensions</AssemblyReference>
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>Microsoft.Practices.Unity</AssemblyReference>
+      <AssemblyReference>Microsoft.Practices.Unity.Configuration</AssemblyReference>
+      <AssemblyReference>Microsoft.Practices.Unity.RegistrationByConvention</AssemblyReference>
+      <AssemblyReference>MLC.WF.Activities</AssemblyReference>
+      <AssemblyReference>MLC.WF.Core</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>NHibernate</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Activities.DurableInstancing</AssemblyReference>
+      <AssemblyReference>System.Activities.Presentation</AssemblyReference>
+      <AssemblyReference>System.Configuration</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Resources.ResourceManager</AssemblyReference>
+      <AssemblyReference>System.Runtime</AssemblyReference>
+      <AssemblyReference>System.Runtime.DurableInstancing</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Web</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>WebClient.Common</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>MLC.Wms.Common</AssemblyReference>
+      <AssemblyReference>MLC.Wms.Model</AssemblyReference>
+      <AssemblyReference>MLC.Wms.WF.Activities</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>MLC.Wms.Workflows</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Flowchart DisplayName="Main" sap2010:WorkflowViewState.IdRef="Flowchart_6">
+    <Flowchart.Variables>
+      <Variable x:TypeArguments="x:String" Name="formActionCode" />
+      <Variable x:TypeArguments="mwcm:WfDataModel" Name="formDataModel" />
+      <Variable x:TypeArguments="mwcm:WfMetadataModel" Name="formMetaModel" />
+      <Variable x:TypeArguments="x:String" Name="workerLastName" />
+      <Variable x:TypeArguments="x:String" Name="workerName" />
+      <Variable x:TypeArguments="x:String" Name="workerMiddleName" />
+      <Variable x:TypeArguments="mwme:YVehicle" Name="vehicle" />
+      <Variable x:TypeArguments="x:Boolean" Name="isInBlackList" />
+    </Flowchart.Variables>
+    <Flowchart.StartNode>
+      <FlowStep x:Name="__ReferenceID9" sap2010:WorkflowViewState.IdRef="FlowStep_27">
+        <Flowchart DisplayName="Подготовка данных" sap2010:WorkflowViewState.IdRef="Flowchart_2">
+          <Flowchart.Variables>
+            <Variable x:TypeArguments="wcmb:BindingsCreator" Name="bindingsCreator" />
+            <Variable x:TypeArguments="mwme:YVehicle" Name="initVehicle" />
+            <Variable x:TypeArguments="mwcm:WfDataObject" Name="dataObj" />
+            <Variable x:TypeArguments="mwcm:WfDataObjectCreator" Name="dataObjectCreator" />
+          </Flowchart.Variables>
+          <Flowchart.StartNode>
+            <FlowStep x:Name="__ReferenceID3" sap2010:WorkflowViewState.IdRef="FlowStep_33">
+              <mwam:DependencyResolver x:TypeArguments="mwcm:WfDataObjectCreator" sap2010:WorkflowViewState.IdRef="DependencyResolver`1_2">
+                <mwam:DependencyResolver.Result>
+                  <OutArgument x:TypeArguments="mwcm:WfDataObjectCreator">
+                    <mca:CSharpReference x:TypeArguments="mwcm:WfDataObjectCreator">dataObjectCreator</mca:CSharpReference>
+                  </OutArgument>
+                </mwam:DependencyResolver.Result>
+              </mwam:DependencyResolver>
+              <FlowStep.Next>
+                <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_4">
+                  <Assign DisplayName="Готовим данные" sap2010:WorkflowViewState.IdRef="Assign_1">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="mwcm:WfDataModel">
+                        <mca:CSharpReference x:TypeArguments="mwcm:WfDataModel">formDataModel</mca:CSharpReference>
+                      </OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="mwcm:WfDataModel">
+                        <mca:CSharpValue x:TypeArguments="mwcm:WfDataModel" xml:space="preserve">new WfDataModel()
+            {
+                {
+                    "VehicleStruct",
+                    new List&lt;WfDataObject&gt;()
+                    {
+                        dataObjectCreator
+                           .Create&lt;YVehicle&gt;()
+                           .FillFromObject(new YVehicle() { VehicleRN = InitString }, true, false)
+                           .AddOrUpdate("id", null)
+                           .Get()
+                    }
+                }
+            }</mca:CSharpValue>
+                      </InArgument>
+                    </Assign.Value>
+                  </Assign>
+                  <FlowStep.Next>
+                    <FlowStep x:Name="__ReferenceID2" sap2010:WorkflowViewState.IdRef="FlowStep_3">
+                      <mwam:DependencyResolver x:TypeArguments="wcmb:BindingsCreator" sap2010:WorkflowViewState.IdRef="DependencyResolver`1_1">
+                        <mwam:DependencyResolver.Result>
+                          <OutArgument x:TypeArguments="wcmb:BindingsCreator">
+                            <mca:CSharpReference x:TypeArguments="wcmb:BindingsCreator">bindingsCreator</mca:CSharpReference>
+                          </OutArgument>
+                        </mwam:DependencyResolver.Result>
+                      </mwam:DependencyResolver>
+                      <FlowStep.Next>
+                        <FlowStep x:Name="__ReferenceID1" sap2010:WorkflowViewState.IdRef="FlowStep_2">
+                          <Assign DisplayName="Готовим модель" sap2010:WorkflowViewState.IdRef="Assign_2">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="mwcm:WfMetadataModel">
+                                <mca:CSharpReference x:TypeArguments="mwcm:WfMetadataModel">formMetaModel</mca:CSharpReference>
+                              </OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="mwcm:WfMetadataModel">
+                                <mca:CSharpValue x:TypeArguments="mwcm:WfMetadataModel" xml:space="preserve">new WfMetadataModel()
+            {
+                ViewConfig = new SerializableDictionary&lt;string, object&gt;()
+                {
+                    {"title", "Новый автомобиль"}
+                },
+                Structures = new List&lt;WfStructure&gt;()
+                {
+                    new WfStructure()
+                    {
+                        Name = "VehicleStruct",
+                        EntityType = "YVehicle",
+                        CustomFields = new List&lt;WfField&gt;()
+                        {
+                            new WfField()
+                            {
+                                Name = "id",
+                                Domain = null,
+                                Persist = null,
+                                Hidden = true,
+                                EditorInfo = null,
+                                ColumnInfo = null
+                            }
+                        },
+                        FieldBindings = bindingsCreator
+                            .With&lt;YVehicle&gt;()
+                            .CreateOrReplaceForCard()
+                            .CreateOrReplaceHidden(i =&gt; i.VehicleID)
+                            .List()
+                            .Select(i =&gt; new WfFieldBinding(i))
+                            .Cast&lt;IFieldBinding&gt;()
+                            .ToList()
+                    }
+                }
+            }</mca:CSharpValue>
+                              </InArgument>
+                            </Assign.Value>
+                          </Assign>
+                        </FlowStep>
+                      </FlowStep.Next>
+                    </FlowStep>
+                  </FlowStep.Next>
+                </FlowStep>
+              </FlowStep.Next>
+            </FlowStep>
+          </Flowchart.StartNode>
+          <x:Reference>__ReferenceID0</x:Reference>
+          <x:Reference>__ReferenceID1</x:Reference>
+          <x:Reference>__ReferenceID2</x:Reference>
+          <x:Reference>__ReferenceID3</x:Reference>
+        </Flowchart>
+        <FlowStep.Next>
+          <FlowStep x:Name="__ReferenceID10" sap2010:WorkflowViewState.IdRef="FlowStep_26">
+            <mwac:RequestResponse sap2010:WorkflowViewState.IdRef="RequestResponse_1">
+              <mwac:RequestResponse.ActionCode>
+                <OutArgument x:TypeArguments="x:String">
+                  <mca:CSharpReference x:TypeArguments="x:String">formActionCode</mca:CSharpReference>
+                </OutArgument>
+              </mwac:RequestResponse.ActionCode>
+              <mwac:RequestResponse.Actions>
+                <InArgument x:TypeArguments="mwcm:WfActionsModel">
+                  <mca:CSharpValue x:TypeArguments="mwcm:WfActionsModel" xml:space="preserve">new WfActionsModel()
+            {
+                new WfAction() {Code = "CREATE", Text = "Создать", Glyph = 0xf0c7 },
+                new WfAction() {Code = "CLOSE", Text = "Отмена", IgnoreValidation = true }
+            }</mca:CSharpValue>
+                </InArgument>
+              </mwac:RequestResponse.Actions>
+              <mwac:RequestResponse.BookmarkName>
+                <InArgument x:TypeArguments="x:String">
+                  <mca:CSharpValue x:TypeArguments="x:String">null</mca:CSharpValue>
+                </InArgument>
+              </mwac:RequestResponse.BookmarkName>
+              <mwac:RequestResponse.Data>
+                <InOutArgument x:TypeArguments="mwcm:WfDataModel">
+                  <mca:CSharpReference x:TypeArguments="mwcm:WfDataModel">formDataModel</mca:CSharpReference>
+                </InOutArgument>
+              </mwac:RequestResponse.Data>
+              <mwac:RequestResponse.Model>
+                <InArgument x:TypeArguments="mwcm:WfMetadataModel">
+                  <mca:CSharpValue x:TypeArguments="mwcm:WfMetadataModel">formMetaModel</mca:CSharpValue>
+                </InArgument>
+              </mwac:RequestResponse.Model>
+              <mwac:RequestResponse.ViewKind>
+                <InArgument x:TypeArguments="x:String">
+                  <mca:CSharpValue x:TypeArguments="x:String">JsWfViewKind.Card</mca:CSharpValue>
+                </InArgument>
+              </mwac:RequestResponse.ViewKind>
+            </mwac:RequestResponse>
+            <FlowStep.Next>
+              <FlowSwitch x:TypeArguments="x:String" x:Name="__ReferenceID11" DisplayName="formActionCode" sap2010:WorkflowViewState.IdRef="FlowSwitch`1_1">
+                <FlowSwitch.Default>
+                  <FlowStep x:Name="__ReferenceID12" sap2010:WorkflowViewState.IdRef="FlowStep_11">
+                    <Throw DisplayName="&quot;Неизвестное действие&quot;" sap2010:WorkflowViewState.IdRef="Throw_2">
+                      <InArgument x:TypeArguments="s:Exception">
+                        <mca:CSharpValue x:TypeArguments="s:Exception">new Exception(string.Format("Неизвестное действие {0}.", formActionCode))</mca:CSharpValue>
+                      </InArgument>
+                    </Throw>
+                  </FlowStep>
+                </FlowSwitch.Default>
+                <FlowSwitch.Expression>
+                  <mca:CSharpValue x:TypeArguments="x:String">formActionCode</mca:CSharpValue>
+                </FlowSwitch.Expression>
+                <FlowStep x:Key="CLOSE" x:Name="__ReferenceID13" sap2010:WorkflowViewState.IdRef="FlowStep_12">
+                  <mwam:Exit sap2010:WorkflowViewState.IdRef="Exit_2" />
+                </FlowStep>
+                <FlowStep x:Key="CREATE" x:Name="__ReferenceID14" sap2010:WorkflowViewState.IdRef="FlowStep_24">
+                  <mwad:SessionScope sap2010:WorkflowViewState.IdRef="SessionScope_1">
+                    <Flowchart DisplayName="Пишем" sap2010:WorkflowViewState.IdRef="Flowchart_3">
+                      <Flowchart.Variables>
+                        <Variable x:TypeArguments="n:ISession" Name="session" />
+                        <Variable x:TypeArguments="mwcm:WfDataObject" Name="obj" />
+                      </Flowchart.Variables>
+                      <Flowchart.StartNode>
+                        <FlowStep x:Name="__ReferenceID5" sap2010:WorkflowViewState.IdRef="FlowStep_31">
+                          <mwad:SessionGet sap2010:WorkflowViewState.IdRef="SessionGet_1">
+                            <mwad:SessionGet.Session>
+                              <OutArgument x:TypeArguments="n:ISession">
+                                <mca:CSharpReference x:TypeArguments="n:ISession">session</mca:CSharpReference>
+                              </OutArgument>
+                            </mwad:SessionGet.Session>
+                          </mwad:SessionGet>
+                          <FlowStep.Next>
+                            <FlowStep x:Name="__ReferenceID6" sap2010:WorkflowViewState.IdRef="FlowStep_30">
+                              <Assign sap2010:WorkflowViewState.IdRef="Assign_13">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="mwcm:WfDataObject">
+                                    <mca:CSharpReference x:TypeArguments="mwcm:WfDataObject">obj</mca:CSharpReference>
+                                  </OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="mwcm:WfDataObject">
+                                    <mca:CSharpValue x:TypeArguments="mwcm:WfDataObject">formDataModel["VehicleStruct"].First()</mca:CSharpValue>
+                                  </InArgument>
+                                </Assign.Value>
+                              </Assign>
+                              <FlowStep.Next>
+                                <FlowStep x:Name="__ReferenceID7" sap2010:WorkflowViewState.IdRef="FlowStep_32">
+                                  <Assign sap2010:WorkflowViewState.IdRef="Assign_14">
+                                    <Assign.To>
+                                      <OutArgument x:TypeArguments="mwme:YVehicle">
+                                        <mca:CSharpReference x:TypeArguments="mwme:YVehicle">vehicle</mca:CSharpReference>
+                                      </OutArgument>
+                                    </Assign.To>
+                                    <Assign.Value>
+                                      <InArgument x:TypeArguments="mwme:YVehicle">
+                                        <mca:CSharpValue x:TypeArguments="mwme:YVehicle" xml:space="preserve">new YVehicle()
+            {
+                CarType = obj["CarType"] == null ? null : session.Query&lt;WmsCarType&gt;().Single(i =&gt; i.CarTypeID == ((WfEntityReference)obj["CarType"]).GetConvertedId&lt;int&gt;()),
+                VehicleColor = obj["VehicleColor"] == null ? null : session.Query&lt;USERENUM_CAR_COLOR&gt;().Single(i =&gt; i.UserEnumID == ((WfEntityReference)obj["VehicleColor"]).GetConvertedId&lt;int&gt;()),
+                VehicleEmptyWeight = (int?)obj["VehicleEmptyWeight"],
+                VehicleHostRef = (string)obj["VehicleHostRef"],
+                VehicleMaxWeight = (int?)obj["VehicleMaxWeight"],
+                VehicleOwnerLegal = obj["VehicleOwnerLegal"] == null ? null : session.Query&lt;WmsPartner&gt;().Single(i =&gt; i.PartnerID == ((WfEntityReference)obj["VehicleOwnerLegal"]).GetConvertedId&lt;int&gt;()),
+                VehiclePerson = obj["VehiclePerson"] == null ? null : session.Query&lt;WmsWorker&gt;().Single(i =&gt; i.WorkerID == ((WfEntityReference)obj["VehiclePerson"]).GetConvertedId&lt;int&gt;()),
+                VehicleRN = (string)obj["VehicleRN"],
+                VehicleSemiTrailerEmptyWeight = (int?)obj["VehicleSemiTrailerEmptyWeight"],
+                VehicleSemiTrailerMaxWeight = (int?)obj["VehicleSemiTrailerMaxWeight"],
+                VehicleSemiTrailerRN = (string)obj["VehicleSemiTrailerRN"],
+                VehicleTrailerEmptyWeight = (int?)obj["VehicleTrailerEmptyWeight"],
+                VehicleTrailerMaxWeight = (int?)obj["VehicleTrailerMaxWeight"],
+                VehicleTrailerRN = (string)obj["VehicleTrailerRN"],
+                VehicleType = obj["VehicleType"] == null ? null : session.Query&lt;USERENUM_CAR_TYPE&gt;().Single(i =&gt; i.UserEnumID == ((WfEntityReference)obj["VehicleType"]).GetConvertedId&lt;int&gt;()),
+                VehicleVIN = (string)obj["VehicleVIN"],
+            }</mca:CSharpValue>
+                                      </InArgument>
+                                    </Assign.Value>
+                                  </Assign>
+                                  <FlowStep.Next>
+                                    <FlowStep x:Name="__ReferenceID4" sap2010:WorkflowViewState.IdRef="FlowStep_29">
+                                      <mwad:EntityAdd Entities="{x:Null}" sap2010:WorkflowViewState.IdRef="EntityAdd_3">
+                                        <mwad:EntityAdd.Entity>
+                                          <InArgument x:TypeArguments="x:Object">
+                                            <mca:CSharpValue x:TypeArguments="x:Object">vehicle</mca:CSharpValue>
+                                          </InArgument>
+                                        </mwad:EntityAdd.Entity>
+                                      </mwad:EntityAdd>
+                                    </FlowStep>
+                                  </FlowStep.Next>
+                                </FlowStep>
+                              </FlowStep.Next>
+                            </FlowStep>
+                          </FlowStep.Next>
+                        </FlowStep>
+                      </Flowchart.StartNode>
+                      <x:Reference>__ReferenceID4</x:Reference>
+                      <x:Reference>__ReferenceID5</x:Reference>
+                      <x:Reference>__ReferenceID6</x:Reference>
+                      <x:Reference>__ReferenceID7</x:Reference>
+                    </Flowchart>
+                  </mwad:SessionScope>
+                  <FlowStep.Next>
+                    <FlowStep x:Name="__ReferenceID8" sap2010:WorkflowViewState.IdRef="FlowStep_1">
+                      <mwac:AddResponseData DisplayName="Возвращаем результат" sap2010:WorkflowViewState.IdRef="AddResponseData_1">
+                        <mwac:AddResponseData.Data>
+                          <InArgument x:TypeArguments="mwcm:WfDataModel">
+                            <mca:CSharpValue x:TypeArguments="mwcm:WfDataModel" xml:space="preserve">new WfDataModel()
+            {
+                {
+                  "VehicleInfo",
+                  new List&lt;WfDataObject&gt;
+                  {
+                    new WfDataObject()
+                    {
+                      {
+                          "VehicleEntityRef",
+                          new WfEntityReference() {
+                                Id = vehicle.VehicleID, 
+                                EntityType = "YVehicle", 
+                                Values = new WfEntityReferenceFieldValue[] {
+                                    new WfEntityReferenceFieldValue() { Name = "VRnMarkModel", Value = vehicle.VRnMarkModel }
+                                }
+                            }
+                      }
+                    }
+                  }
+                }
+            }</mca:CSharpValue>
+                          </InArgument>
+                        </mwac:AddResponseData.Data>
+                      </mwac:AddResponseData>
+                    </FlowStep>
+                  </FlowStep.Next>
+                </FlowStep>
+              </FlowSwitch>
+            </FlowStep.Next>
+          </FlowStep>
+        </FlowStep.Next>
+      </FlowStep>
+    </Flowchart.StartNode>
+    <x:Reference>__ReferenceID8</x:Reference>
+    <x:Reference>__ReferenceID9</x:Reference>
+    <x:Reference>__ReferenceID10</x:Reference>
+    <x:Reference>__ReferenceID11</x:Reference>
+    <x:Reference>__ReferenceID12</x:Reference>
+    <x:Reference>__ReferenceID13</x:Reference>
+    <x:Reference>__ReferenceID14</x:Reference>
+    <sads:DebugSymbol.Symbol>d1REOlx3bXNNbGNXZWJBcHBcc3JjXE1MQy5XbXNcTUxDLldtcy5Xb3JrZmxvd3NcV2ZfRGF0YVxDTElFTlQkQUREVkVISUNMRSQxLjAuMC4wLnhhbWwlVAONAw8CAQFhCdEBFQMBrgHUAQ33ASQCAXGEAhOEAl8CAWf8ARWAAh0CAVyKAhPdAicCAQ7gAhf7Ai4CAQOHAhOHAkkCAQJqD3ApAwH4AXMTiwEcAwHbAY4BF5QBMQMBzAGXARvEASQDAa8B1wET1wFnAwGkAeUBE+UBVQMBmgH0ARP0AWIDAZAB3AET4AEgAwGGAe8BE+8BagIBfOoBE+oBbgIBcv4BGf4BowECAV2LAhXcAiECAQ/jAh34AiACAQRtFW18AwH5AXsZiAEgAwHqAXYZdnQDAdwBkQEdkQF+AwHNAZ8BIcEBIAMBvgGaASGaAYABAwGwAZICG5gCLQIBT5sCH6YCKAIBNqkCI8YCLAIBHckCJ88COAIBEJUCIZUCcAIBUKMCJaMCkgECAUOeAiWeAncCATexAinDAiACASqsAimsAnsCAR7MAi3MAnICARE=</sads:DebugSymbol.Symbol>
+  </Flowchart>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="DependencyResolver`1_2" sap:VirtualizedContainerService.HintSize="200,22">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="242,62">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="DependencyResolver`1_1" sap:VirtualizedContainerService.HintSize="200,22">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_2" sap:VirtualizedContainerService.HintSize="242,62">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">179,449</av:Point>
+            <av:Size x:Key="ShapeSize">242,62</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_3">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">200,357</av:Point>
+            <av:Size x:Key="ShapeSize">200,22</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,379 300,449</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">179,219</av:Point>
+            <av:Size x:Key="ShapeSize">242,62</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,281 300,357</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_33">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">200,129</av:Point>
+            <av:Size x:Key="ShapeSize">200,22</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,151 300,219</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Flowchart_2" sap:VirtualizedContainerService.HintSize="200,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
+            <av:Size x:Key="ShapeSize">60,75</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,129</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="RequestResponse_1" sap:VirtualizedContainerService.HintSize="200,22">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Throw_2" sap:VirtualizedContainerService.HintSize="200,22">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_11">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">20,329</av:Point>
+            <av:Size x:Key="ShapeSize">200,22</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Exit_2" sap:VirtualizedContainerService.HintSize="200,22">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_12">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">380,469</av:Point>
+            <av:Size x:Key="ShapeSize">200,22</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="SessionGet_1" sap:VirtualizedContainerService.HintSize="200,22">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_13" sap:VirtualizedContainerService.HintSize="242,62">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_14" sap:VirtualizedContainerService.HintSize="242,62">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="EntityAdd_3" sap:VirtualizedContainerService.HintSize="200,62">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_29">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">430,419</av:Point>
+            <av:Size x:Key="ShapeSize">200,62</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_32">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">408.79,314</av:Point>
+            <av:Size x:Key="ShapeSize">242,62</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">529.79,376 529.79,406 530,406 530,419</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_30">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">408.895,202</av:Point>
+            <av:Size x:Key="ShapeSize">242,62</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">529.895,264 529.895,294 529.79,294 529.79,314</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_31">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">430,130</av:Point>
+            <av:Size x:Key="ShapeSize">200,22</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">530,152 530,182 529.895,182 529.895,202</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Flowchart_3" sap:VirtualizedContainerService.HintSize="200,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <av:Point x:Key="ShapeLocation">500,2.5</av:Point>
+            <av:Size x:Key="ShapeSize">60,75</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">530,77.5 530,130</av:PointCollection>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            <x:Double x:Key="Width">1128</x:Double>
+            <x:Double x:Key="Height">815.5</x:Double>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="SessionScope_1" sap:VirtualizedContainerService.HintSize="226,148">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="AddResponseData_1" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="FlowStep_1">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">50,659</av:Point>
+            <av:Size x:Key="ShapeSize">200,22</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_24">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">40,466</av:Point>
+            <av:Size x:Key="ShapeSize">226,148</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">153,614 153,644 150,644 150,659</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowSwitch`1_1" sap:VirtualizedContainerService.HintSize="95,87">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <av:Point x:Key="ShapeLocation">255,286.5</av:Point>
+            <av:Size x:Key="ShapeSize">95,87</av:Size>
+            <av:PointCollection x:Key="Default">255,308.25 120,308.25 120,329</av:PointCollection>
+            <av:PointCollection x:Key="CREATEConnector">278.25,373.5 278.25,403.5 153,403.5 153,466</av:PointCollection>
+            <av:PointCollection x:Key="CLOSEConnector">326.25,373.5 326.25,403.5 480,403.5 480,469</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_26">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">200,209</av:Point>
+            <av:Size x:Key="ShapeSize">200,22</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,231 300,261 301.5,261 301.5,286.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_27">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">200,114.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,51</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,165.5 300,209</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Flowchart_6" sap:VirtualizedContainerService.HintSize="743,1497">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
+            <av:Size x:Key="ShapeSize">60,75</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,114.5</av:PointCollection>
+            <x:Double x:Key="Height">1461</x:Double>
+            <x:Double x:Key="Width">729</x:Double>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="MLC.Wms.Workflows.Wf_Data.ADDCARDRIVER_1" sap:VirtualizedContainerService.HintSize="783,1577" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report ScriptLanguage="CSharp" ReportInfo.Created="03/20/2013 13:35:47" ReportInfo.Modified="12/05/2013 16:43:21" ReportInfo.CreatorVersion="2013.1.0.0">
+  <Dictionary>
+    <OdbcDataConnection Name="Connection" ConnectionString="rijcmlq8jIW79bYyjp4qftjbW/Y4LMrZMu3yegu4368DJJvxIF/LfENdvTE8mrg279eIqRBdSaXPiFOqxT+G1LsnTKCNA==">
+      <TableDataSource Name="Table" Alias="Body" DataType="System.Int32" Enabled="true" SelectCommand="select t.tecode&#13;&#10;from dev_mp_wt.vwtentTE t&#13;&#10;where t.tecode = :P1;">
+        <Column Name="TECODE" DataType="System.String"/>
+        <CommandParameter Name="P1" DataType="22" Expression="[TECODE]"/>
+      </TableDataSource>
+    </OdbcDataConnection>
+    <Parameter Name="TECODE" DataType="System.String"/>
+  </Dictionary>
+  <ReportPage Name="Page1" PaperWidth="100" PaperHeight="70" FirstPageSource="1" OtherPagesSource="1" Guides="0,304.29,7.56,298.85,304.27,302.4,292.95,292.95,292.95,302.4">
+    <DataBand Name="Data1" Width="302.4" Height="187.11" Guides="71.82,187.11,0,115.29,9.45,109.62">
+      <TableObject Name="Table2" Top="71.82" Width="304.29" Height="115.29">
+        <TableColumn Name="Column3" Width="304.29"/>
+        <TableRow Name="Row2" Height="115.29">
+          <TableCell Name="Cell3" HorzAlign="Center" VertAlign="Center">
+            <BarcodeObject Name="Barcode1" Left="7.56" Top="9.45" Width="291.29" Height="100.17" CanGrow="true" GrowToBottom="true" AutoSize="false" Expression="[Body.TECODE]" ShowText="false" Barcode="Code128" Barcode.AutoEncode="true"/>
+          </TableCell>
+        </TableRow>
+      </TableObject>
+      <TextObject Name="Text1" Left="7.56" Top="9.45" Width="291.29" Height="62.37" Text="[Body.TECODE]&#13;&#10;" HorzAlign="Center" VertAlign="Center" Font="Arial, 22pt"/>
+    </DataBand>
+  </ReportPage>
+</Report>

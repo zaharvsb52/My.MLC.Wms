@@ -1,0 +1,50 @@
+﻿@using MLC.Wms.WebApp.Common
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimal-ui">
+    <title>@MvcApplication.ProductVersion</title>
+
+    @{ var appPath = PathUtility.Singleton.CommonScriptsPath;}
+    @Html.Include("$extjs/packages/ext-theme-crisp/build/resources/ext-theme-crisp-all.css")
+    @Html.Include("$commonstyles/common.css")
+
+    @Html.Include("$extjs/ext-all-debug.js")
+    @Html.Include("$extjs/packages/ext-theme-crisp/build/ext-theme-crisp.js")
+    @Html.Include("$extjs/packages/ext-locale/build/ext-locale-ru.js")
+
+    @Html.Include(String.Format("{0}/LoginForm.js", appPath))
+    <script type="text/javascript">
+        Ext.onReady(function () {
+            var w = new MLC.wms.LoginForm({
+                rootpath: '@VirtualPathUtility.AppendTrailingSlash(Html.ResolveClientUrl("~").ToHtmlString())',
+                productVersion: '@MvcApplication.ProductVersion',
+                listeners: {
+                    loginsuccess: function() {
+                        var param = Ext.Object.fromQueryString(location.search);
+                        if (param.ReturnUrl)
+                            window.location = param.ReturnUrl;
+                        else
+                            window.location = this.rootpath;
+                    }
+                }
+            });
+            new Ext.container.Viewport({
+                layout: 'center',
+                items: [w]
+            });
+
+            w.show();
+        });
+    </script>
+
+</head>
+<body class="c-dark-background">
+</body>
+</html>

@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="MLC.Wms.Integration.v1.QueueService" Factory="MLC.Wms.Integration.WcfServiceFactory" %>

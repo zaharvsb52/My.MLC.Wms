@@ -1,0 +1,53 @@
+﻿@using MLC.Wms.WebApp.Common
+@using StackExchange.Profiling
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimal-ui">
+    <title>@MvcApplication.ProductVersion</title>
+
+    @Html.Include("$commonscripts/console.js")
+    @{
+        var appPath = PathUtility.Singleton.CommonScriptsPath;
+        var stylePath = PathUtility.Singleton.CommonStylesPath;
+    }
+
+    @Html.Include("$extjs/packages/ext-theme-crisp/build/resources/ext-theme-crisp-all.css")
+    @Html.Include("~/Resources/ux-5.1.0.107-mod/desktop/resources/desktop.css")
+    @Html.Include("~/Resources/jquery-scripts/jquery-2.2.3.min.js")
+    @Html.Include("~/Resources/jquery-scripts/jquery.signalR-2.2.0.min.js")
+    @Html.Include("$commonstyles/common.css")
+    @Html.Include(String.Format("{0}/font-awesome.min.css", stylePath))
+    @Html.Include(String.Format("{0}/common.css", stylePath))
+
+    @Html.Include("$extjs/ext-all-debug.js")
+    @Html.Include("$extjs/packages/ext-theme-crisp/build/ext-theme-crisp.js")
+    @Html.Include("$extjs/packages/ext-locale/build/ext-locale-ru.js")
+
+    <script type="text/javascript">
+    Ext.Loader.setConfig({
+        enabled: true,
+        disableCaching: false,
+        paths: {
+            'Ext.ux': '@VirtualPathUtility.AppendTrailingSlash(Html.ResolveClientUrl("~/Resources/ux-5.1.0.107-mod").ToHtmlString())',
+            'WebClient.common': '@VirtualPathUtility.AppendTrailingSlash(Html.ResolveClientUrl("$commonscripts").ToHtmlString())',
+            'MLC.wms': '@VirtualPathUtility.AppendTrailingSlash(Html.ResolveClientUrl(appPath).ToHtmlString())',
+            'MLC.wf': '@VirtualPathUtility.AppendTrailingSlash(Html.ResolveClientUrl(MLC.WF.ClientScripts.PathUtility.Singleton.ScriptsPath).ToHtmlString())'
+        }
+    });
+    </script>
+
+    @Html.Include("$commonscripts/designbycontract.js")
+    @Html.Include("$commonscripts/init.js")
+    @Html.Include("$commonscripts/extjs-override.js")
+    @Html.Include(String.Format("{0}/extjs-override.js", appPath))
+
+    @RenderSection("masterhead", false)
+    @MiniProfiler.RenderIncludes(position: RenderPosition.Right, showControls: true)
+</head>
+<body>
+    @RenderBody()
+</body>
+</html>

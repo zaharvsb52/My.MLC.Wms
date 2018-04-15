@@ -1,0 +1,50 @@
+﻿.gr-trigger {
+    font-family: "Ionicons";
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 20px;
+    line-height: 20px;
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 4px;
+    z-index: 1;
+}
+
+.gr-trigger-external-link:after { content: "\f3ef"; }
+
+
+.gr-entity-ref-empty .gr-trigger { display: none; }
+
+.gr-entity-ref .x-grid-cell-inner-action-col {
+    line-height: inherit;
+    font-size: inherit;
+    height: 24px;
+}
+
+.gr-entity-ref > .x-grid-cell-inner.x-grid-cell-inner-action-col::after {
+    content: "\f3ef";
+    position: absolute;
+    font-family: "Ionicons";
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 20px;
+    line-height: 20px;
+    color: #a3a3a3;
+    position: absolute;
+    top: 2px;
+    right: 4px;
+    z-index: 0;
+}
+
+.gr-entity-ref > div { padding-right: 22px; }

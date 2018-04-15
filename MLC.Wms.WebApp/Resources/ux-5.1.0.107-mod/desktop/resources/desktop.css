@@ -1,0 +1,102 @@
+﻿/*!
+* Ext JS Library 4.0
+* Copyright(c) 2006-2011 Sencha Inc.
+* licensing@sencha.com
+* http://www.sencha.com/license
+*/
+
+
+/*----------------------------------------------------
+    Start Button
+*/
+
+.ux-start-button-icon {
+  background-image: url(images/taskbar/home.png) !important;
+  background-color: transparent;
+}
+
+.ux-start-button .x-btn-arrow {
+  background-image: none;
+}
+
+.ux-taskbar {
+  padding-left: 4px !important;
+}
+
+
+/*----------------------------------------------------
+    Start Menu
+*/
+
+.ux-start-menu-toolbar .x-btn-inner {
+  text-align: left;
+}
+
+.ux-start-menu-toolbar {
+  padding: 4px !important;
+}
+
+/*----------------------------------------------------
+    TaskBar
+*/
+
+/* Use high specificity selector to override default styling*/
+div.ux-taskbar div.x-toolbar {
+  background: transparent none;
+  border: 0 none;
+  padding: 0;
+}
+
+.ux-desktop-windowbar .x-btn-inner,
+.x-nbr .ux-desktop-windowbar .x-btn-icon-text-left button {
+  text-align: left !important;
+}
+
+/*----------------------------------------------------
+    Tray Clock
+*/
+
+.ux-desktop-trayclock {
+  text-align: center;
+  vertical-align: middle;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/*----------------------------------------------------
+    Desktop DataView
+*/
+
+.ux-wallpaper {
+  background-color: #3d71b8;
+}
+
+.ux-wallpaper-tiled {
+  background-repeat: repeat;
+}
+
+.ux-desktop-shortcut {
+  cursor: pointer;
+  text-align: center;
+  padding: 8px;
+  margin: 8px;
+  width: 64px;
+}
+
+.ux-desktop-shortcut-icon {
+  width: 48px;
+  height: 48px;
+  background-color: transparent;
+  background-repeat: no-repeat;
+}
+
+.ux-desktop-shortcut-text {
+  font: normal 10px tahoma,arial,verdana,sans-serif;
+  text-decoration: none;
+  padding-top: 5px;
+  color: white;
+}
+
+.x-view-over .ux-desktop-shortcut-text {
+  text-decoration: underline;
+}

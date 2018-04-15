@@ -1,0 +1,771 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="MLC.Wms.Workflows.Wf_Data.INTEGRATION_IN_MAIN"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities"
+ xmlns:mwac="clr-namespace:MLC.WF.Activities.Communication;assembly=MLC.WF.Activities"
+ xmlns:mwad="clr-namespace:MLC.WF.Activities.DataAccess;assembly=MLC.WF.Activities"
+ xmlns:mwam="clr-namespace:MLC.WF.Activities.Manage;assembly=MLC.WF.Activities"
+ xmlns:mwice="clr-namespace:MLC.Wms.Integration.Common.Exceptions;assembly=MLC.Wms.Integration.Common"
+ xmlns:mwicm="clr-namespace:MLC.Wms.Integration.Common.Message;assembly=MLC.Wms.Integration.Common"
+ xmlns:mwme="clr-namespace:MLC.Wms.Model.Entities;assembly=MLC.Wms.Model"
+ xmlns:n="clr-namespace:NHibernate;assembly=NHibernate"
+ xmlns:s="clr-namespace:System;assembly=mscorlib"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:sle="clr-namespace:System.Linq.Expressions;assembly=System.Core"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="QueueMessageTypeCode" Type="InArgument(x:String)" />
+    <x:Property Name="ContentWorkflowIdentity" Type="InArgument(x:String)" />
+    <x:Property Name="MandantCode" Type="InArgument(x:String)" />
+    <x:Property Name="Setting" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
+  </x:Members>
+  <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
+  <sap2010:WorkflowViewState.IdRef>MLC.Wms.Workflows.Wf_Data.INTEGRATION_IN_MAIN_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>MLC.Wms.Model.Entities</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>NHibernate</x:String>
+      <x:String>NHibernate.Linq</x:String>
+      <x:String>MLC.Wms.Integration.Common.Exceptions</x:String>
+      <x:String>MLC.Wms.Integration.Common.Message</x:String>
+      <x:String>MLC.Wms.Integration.Common</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Iesi.Collections</AssemblyReference>
+      <AssemblyReference>log4net</AssemblyReference>
+      <AssemblyReference>Microsoft.Activities.Extensions</AssemblyReference>
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>Microsoft.Practices.Unity</AssemblyReference>
+      <AssemblyReference>Microsoft.Practices.Unity.Configuration</AssemblyReference>
+      <AssemblyReference>Microsoft.Practices.Unity.RegistrationByConvention</AssemblyReference>
+      <AssemblyReference>MLC.WF.Activities</AssemblyReference>
+      <AssemblyReference>MLC.WF.Core</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>NHibernate</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>Serialize.Linq</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Activities.DurableInstancing</AssemblyReference>
+      <AssemblyReference>System.Activities.Presentation</AssemblyReference>
+      <AssemblyReference>System.Configuration</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Linq.Dynamic</AssemblyReference>
+      <AssemblyReference>System.Runtime.DurableInstancing</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Web</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>WebClient.Abac</AssemblyReference>
+      <AssemblyReference>WebClient.Common</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>MLC.Wms.Api</AssemblyReference>
+      <AssemblyReference>MLC.Wms.Bootstrap</AssemblyReference>
+      <AssemblyReference>MLC.Wms.Common</AssemblyReference>
+      <AssemblyReference>MLC.Wms.Integration.Common</AssemblyReference>
+      <AssemblyReference>MLC.Wms.Model</AssemblyReference>
+      <AssemblyReference>MLC.Wms.WF.Activities</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>MLC.Wms.Workflows</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Flowchart DisplayName="B4026EBB-3CDB-4C4E-AC77-40187EDECF1" sap2010:WorkflowViewState.IdRef="Flowchart_15">
+    <Flowchart.Variables>
+      <Variable x:TypeArguments="mwme:IoQueueIn" Name="currentMessage" />
+      <Variable x:TypeArguments="WorkflowIdentity" Name="contentWorkflowIdentity" />
+    </Flowchart.Variables>
+    <Flowchart.StartNode>
+      <FlowStep x:Name="__ReferenceID11" sap2010:WorkflowViewState.IdRef="FlowStep_83">
+        <Flowchart DisplayName="get content identity" sap2010:WorkflowViewState.IdRef="Flowchart_16">
+          <Flowchart.Variables>
+            <Variable x:TypeArguments="s:String[]" Name="identityParts" />
+          </Flowchart.Variables>
+          <Flowchart.StartNode>
+            <FlowStep x:Name="__ReferenceID1" sap2010:WorkflowViewState.IdRef="FlowStep_82">
+              <Assign sap2010:WorkflowViewState.IdRef="Assign_45">
+                <Assign.To>
+                  <OutArgument x:TypeArguments="s:String[]">
+                    <mca:CSharpReference x:TypeArguments="s:String[]">identityParts</mca:CSharpReference>
+                  </OutArgument>
+                </Assign.To>
+                <Assign.Value>
+                  <InArgument x:TypeArguments="s:String[]">
+                    <mca:CSharpValue x:TypeArguments="s:String[]">ContentWorkflowIdentity.Split('$')</mca:CSharpValue>
+                  </InArgument>
+                </Assign.Value>
+              </Assign>
+              <FlowStep.Next>
+                <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_81">
+                  <Assign sap2010:WorkflowViewState.IdRef="Assign_46">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="WorkflowIdentity">
+                        <mca:CSharpReference x:TypeArguments="WorkflowIdentity">contentWorkflowIdentity</mca:CSharpReference>
+                      </OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="WorkflowIdentity">
+                        <mca:CSharpValue x:TypeArguments="WorkflowIdentity">new WorkflowIdentity(identityParts[1], new Version(identityParts[2]), identityParts[0])</mca:CSharpValue>
+                      </InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </FlowStep>
+              </FlowStep.Next>
+            </FlowStep>
+          </Flowchart.StartNode>
+          <x:Reference>__ReferenceID0</x:Reference>
+          <x:Reference>__ReferenceID1</x:Reference>
+        </Flowchart>
+        <FlowStep.Next>
+          <FlowDecision x:Name="__ReferenceID12" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
+            <FlowDecision.Condition>
+              <mca:CSharpValue x:TypeArguments="x:Boolean">!string.IsNullOrEmpty(MandantCode)</mca:CSharpValue>
+            </FlowDecision.Condition>
+            <FlowDecision.True>
+              <FlowStep x:Name="__ReferenceID10" sap2010:WorkflowViewState.IdRef="FlowStep_80">
+                <DoWhile DisplayName="Цикл" sap2010:WorkflowViewState.IdRef="DoWhile_2">
+                  <DoWhile.Condition>
+                    <mca:CSharpValue x:TypeArguments="x:Boolean">currentMessage != null</mca:CSharpValue>
+                  </DoWhile.Condition>
+                  <Sequence DisplayName="Читаем очередь" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                    <mwad:SessionScope DisplayName="12134fsrew" sap2010:WorkflowViewState.IdRef="SessionScope_2">
+                      <Sequence DisplayName="3453452" sap2010:WorkflowViewState.IdRef="Sequence_8">
+                        <mwad:EntityLinqQuery x:TypeArguments="mwme:IoQueueIn" DisplayName="Читаем сообщение" sap2010:WorkflowViewState.IdRef="EntityLinqQuery`1_11" IsNeedCheckExistence="False">
+                          <mwad:EntityLinqQuery.Result>
+                            <OutArgument x:TypeArguments="mwme:IoQueueIn">
+                              <mca:CSharpReference x:TypeArguments="mwme:IoQueueIn">currentMessage</mca:CSharpReference>
+                            </OutArgument>
+                          </mwad:EntityLinqQuery.Result>
+                          <InArgument x:TypeArguments="sle:Expression(s:Func(mwme:IoQueueIn, x:Boolean))">
+                            <mca:CSharpValue x:TypeArguments="sle:Expression(s:Func(mwme:IoQueueIn, x:Boolean))" xml:space="preserve">m =&gt; m.QueueMessageType.Code == QueueMessageTypeCode 
+            &amp;&amp; m.QueueMessageState == QueueMessageStates.Ready 
+            &amp;&amp; m.Mandant.PartnerCode == MandantCode</mca:CSharpValue>
+                          </InArgument>
+                        </mwad:EntityLinqQuery>
+                        <If sap2010:WorkflowViewState.IdRef="If_5">
+                          <If.Condition>
+                            <InArgument x:TypeArguments="x:Boolean">
+                              <mca:CSharpValue x:TypeArguments="x:Boolean">currentMessage != null</mca:CSharpValue>
+                            </InArgument>
+                          </If.Condition>
+                          <If.Then>
+                            <Assign DisplayName="Выставляем статус" sap2010:WorkflowViewState.IdRef="Assign_37">
+                              <Assign.To>
+                                <OutArgument x:TypeArguments="mwme:QueueMessageStates">
+                                  <mca:CSharpReference x:TypeArguments="mwme:QueueMessageStates">currentMessage.QueueMessageState</mca:CSharpReference>
+                                </OutArgument>
+                              </Assign.To>
+                              <Assign.Value>
+                                <InArgument x:TypeArguments="mwme:QueueMessageStates">
+                                  <mca:CSharpValue x:TypeArguments="mwme:QueueMessageStates">QueueMessageStates.Processing</mca:CSharpValue>
+                                </InArgument>
+                              </Assign.Value>
+                            </Assign>
+                          </If.Then>
+                        </If>
+                      </Sequence>
+                    </mwad:SessionScope>
+                    <If sap2010:WorkflowViewState.IdRef="If_6">
+                      <If.Condition>
+                        <InArgument x:TypeArguments="x:Boolean">
+                          <mca:CSharpValue x:TypeArguments="x:Boolean">currentMessage != null</mca:CSharpValue>
+                        </InArgument>
+                      </If.Condition>
+                      <If.Then>
+                        <TryCatch DisplayName="Обрабатываем сообщение" sap2010:WorkflowViewState.IdRef="TryCatch_2">
+                          <TryCatch.Try>
+                            <mwad:SessionScope DisplayName="345341erwfe23" sap2010:WorkflowViewState.IdRef="SessionScope_3">
+                              <Sequence DisplayName="345dwq3" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                                <Sequence.Variables>
+                                  <Variable x:TypeArguments="scg:IDictionary(x:String, x:Object)" Name="inputs" />
+                                </Sequence.Variables>
+                                <mwad:EntityLinqQuery x:TypeArguments="mwme:IoQueueIn" DisplayName="Перевычитываем сообщение" sap2010:WorkflowViewState.IdRef="EntityLinqQuery`1_7" IsNeedCheckExistence="True">
+                                  <mwad:EntityLinqQuery.Result>
+                                    <OutArgument x:TypeArguments="mwme:IoQueueIn">
+                                      <mca:CSharpReference x:TypeArguments="mwme:IoQueueIn">currentMessage</mca:CSharpReference>
+                                    </OutArgument>
+                                  </mwad:EntityLinqQuery.Result>
+                                  <InArgument x:TypeArguments="sle:Expression(s:Func(mwme:IoQueueIn, x:Boolean))">
+                                    <mca:CSharpValue x:TypeArguments="sle:Expression(s:Func(mwme:IoQueueIn, x:Boolean))">i =&gt; i.ID == currentMessage.ID</mca:CSharpValue>
+                                  </InArgument>
+                                </mwad:EntityLinqQuery>
+                                <Assign DisplayName="default inputs" sap2010:WorkflowViewState.IdRef="Assign_52">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="scg:IDictionary(x:String, x:Object)">
+                                      <mca:CSharpReference x:TypeArguments="scg:IDictionary(x:String, x:Object)">inputs</mca:CSharpReference>
+                                    </OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="scg:IDictionary(x:String, x:Object)">
+                                      <mca:CSharpValue x:TypeArguments="scg:IDictionary(x:String, x:Object)" xml:space="preserve">new Dictionary&lt;string, object&gt;()
+            {
+                {"QueueMessage", currentMessage},
+                {"MandantCode", MandantCode}
+            }</mca:CSharpValue>
+                                    </InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                                <If sap2010:WorkflowViewState.IdRef="If_7">
+                                  <If.Condition>
+                                    <InArgument x:TypeArguments="x:Boolean">
+                                      <mca:CSharpValue x:TypeArguments="x:Boolean">Setting != null &amp;&amp; Setting.Count &gt; 0</mca:CSharpValue>
+                                    </InArgument>
+                                  </If.Condition>
+                                  <If.Then>
+                                    <Assign sap2010:WorkflowViewState.IdRef="Assign_53">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:Object">
+                                          <mca:CSharpReference x:TypeArguments="x:Object">inputs["Setting"]</mca:CSharpReference>
+                                        </OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="x:Object">
+                                          <mca:CSharpValue x:TypeArguments="x:Object">Setting</mca:CSharpValue>
+                                        </InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                  </If.Then>
+                                </If>
+                                <mwac:ExecuteWorkflow Outputs="{x:Null}" DisplayName="Execute Content Workflow" sap2010:WorkflowViewState.IdRef="ExecuteWorkflow_1">
+                                  <mwac:ExecuteWorkflow.Identity>
+                                    <InArgument x:TypeArguments="WorkflowIdentity">
+                                      <mca:CSharpValue x:TypeArguments="WorkflowIdentity">contentWorkflowIdentity</mca:CSharpValue>
+                                    </InArgument>
+                                  </mwac:ExecuteWorkflow.Identity>
+                                  <mwac:ExecuteWorkflow.Inputs>
+                                    <InArgument x:TypeArguments="scg:IDictionary(x:String, x:Object)">
+                                      <mca:CSharpValue x:TypeArguments="scg:IDictionary(x:String, x:Object)">inputs</mca:CSharpValue>
+                                    </InArgument>
+                                  </mwac:ExecuteWorkflow.Inputs>
+                                </mwac:ExecuteWorkflow>
+                                <Assign DisplayName="Чистим сообщение" sap2010:WorkflowViewState.IdRef="Assign_38">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:String">
+                                      <mca:CSharpReference x:TypeArguments="x:String">currentMessage.Message</mca:CSharpReference>
+                                    </OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:String">
+                                      <mca:CSharpValue x:TypeArguments="x:String">null</mca:CSharpValue>
+                                    </InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                                <Assign DisplayName="Статус сообщения" sap2010:WorkflowViewState.IdRef="Assign_39">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="mwme:QueueMessageStates">
+                                      <mca:CSharpReference x:TypeArguments="mwme:QueueMessageStates">currentMessage.QueueMessageState</mca:CSharpReference>
+                                    </OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="mwme:QueueMessageStates">
+                                      <mca:CSharpValue x:TypeArguments="mwme:QueueMessageStates">QueueMessageStates.Completed</mca:CSharpValue>
+                                    </InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                              </Sequence>
+                            </mwad:SessionScope>
+                          </TryCatch.Try>
+                          <TryCatch.Catches>
+                            <Catch x:TypeArguments="s:Exception" sap2010:WorkflowViewState.IdRef="Catch`1_2">
+                              <ActivityAction x:TypeArguments="s:Exception">
+                                <ActivityAction.Argument>
+                                  <DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                                </ActivityAction.Argument>
+                                <mwad:SessionScope DisplayName="Exception Handle SessionScope" sap2010:WorkflowViewState.IdRef="SessionScope_5">
+                                  <Flowchart DisplayName="Exception Handle" sap2010:WorkflowViewState.IdRef="Flowchart_17">
+                                    <Flowchart.Variables>
+                                      <Variable x:TypeArguments="mwice:BaseIntegrationException" Name="integrationException" />
+                                    </Flowchart.Variables>
+                                    <Flowchart.StartNode>
+                                      <FlowStep x:Name="__ReferenceID8" sap2010:WorkflowViewState.IdRef="FlowStep_86">
+                                        <Assign DisplayName="get techErrorExp" sap2010:WorkflowViewState.IdRef="Assign_49">
+                                          <Assign.To>
+                                            <OutArgument x:TypeArguments="mwice:BaseIntegrationException">
+                                              <mca:CSharpReference x:TypeArguments="mwice:BaseIntegrationException">integrationException</mca:CSharpReference>
+                                            </OutArgument>
+                                          </Assign.To>
+                                          <Assign.Value>
+                                            <InArgument x:TypeArguments="mwice:BaseIntegrationException">
+                                              <mca:CSharpValue x:TypeArguments="mwice:BaseIntegrationException">exception as BaseIntegrationException</mca:CSharpValue>
+                                            </InArgument>
+                                          </Assign.Value>
+                                        </Assign>
+                                        <FlowStep.Next>
+                                          <FlowDecision x:Name="__ReferenceID7" DisplayName="!techErr?" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
+                                            <FlowDecision.Condition>
+                                              <mca:CSharpValue x:TypeArguments="x:Boolean">integrationException != null &amp;&amp; !string.IsNullOrEmpty(integrationException.QueueMessageTypeName)</mca:CSharpValue>
+                                            </FlowDecision.Condition>
+                                            <FlowDecision.True>
+                                              <FlowStep x:Name="__ReferenceID9" sap2010:WorkflowViewState.IdRef="FlowStep_85">
+                                                <Flowchart DisplayName="Пишем в Out" sap2010:WorkflowViewState.IdRef="Flowchart_18">
+                                                  <Flowchart.Variables>
+                                                    <Variable x:TypeArguments="mwicm:ErrorMessage" Name="ErrorMessage" />
+                                                    <Variable x:TypeArguments="mwme:IoQueueOut" Name="ioQueueOut" />
+                                                    <Variable x:TypeArguments="n:ISession" Name="session" />
+                                                  </Flowchart.Variables>
+                                                  <Flowchart.StartNode>
+                                                    <FlowStep x:Name="__ReferenceID4" sap2010:WorkflowViewState.IdRef="FlowStep_90">
+                                                      <mwad:SessionGet sap2010:WorkflowViewState.IdRef="SessionGet_1">
+                                                        <mwad:SessionGet.Session>
+                                                          <OutArgument x:TypeArguments="n:ISession">
+                                                            <mca:CSharpReference x:TypeArguments="n:ISession">session</mca:CSharpReference>
+                                                          </OutArgument>
+                                                        </mwad:SessionGet.Session>
+                                                      </mwad:SessionGet>
+                                                      <FlowStep.Next>
+                                                        <FlowStep x:Name="__ReferenceID2" sap2010:WorkflowViewState.IdRef="FlowStep_89">
+                                                          <Assign DisplayName="Формируем сообщение об ошибке" sap2010:WorkflowViewState.IdRef="Assign_50">
+                                                            <Assign.To>
+                                                              <OutArgument x:TypeArguments="mwicm:ErrorMessage">
+                                                                <mca:CSharpReference x:TypeArguments="mwicm:ErrorMessage">ErrorMessage</mca:CSharpReference>
+                                                              </OutArgument>
+                                                            </Assign.To>
+                                                            <Assign.Value>
+                                                              <InArgument x:TypeArguments="mwicm:ErrorMessage">
+                                                                <mca:CSharpValue x:TypeArguments="mwicm:ErrorMessage" xml:space="preserve">(integrationException is TechnicalIntegrationException) &amp;&amp; ((TechnicalIntegrationException)integrationException).ErrorMessage != null
+                ? ((TechnicalIntegrationException)integrationException).ErrorMessage
+                : new ErrorMessage()
+                {
+                    ErrorInfoList = new List&lt;ErrorInfo&gt;()
+                    {
+                        IntegrationErrorInfoProvider.GetErrorInfo(integrationException)
+                    }
+                }</mca:CSharpValue>
+                                                              </InArgument>
+                                                            </Assign.Value>
+                                                          </Assign>
+                                                          <FlowStep.Next>
+                                                            <FlowStep x:Name="__ReferenceID3" sap2010:WorkflowViewState.IdRef="FlowStep_88">
+                                                              <Assign DisplayName="ioQueueOut" sap2010:WorkflowViewState.IdRef="Assign_51">
+                                                                <Assign.To>
+                                                                  <OutArgument x:TypeArguments="mwme:IoQueueOut">
+                                                                    <mca:CSharpReference x:TypeArguments="mwme:IoQueueOut">ioQueueOut</mca:CSharpReference>
+                                                                  </OutArgument>
+                                                                </Assign.To>
+                                                                <Assign.Value>
+                                                                  <InArgument x:TypeArguments="mwme:IoQueueOut">
+                                                                    <mca:CSharpValue x:TypeArguments="mwme:IoQueueOut" xml:space="preserve">new IoQueueOut()
+            {
+                QueueMessageType = session.Query&lt;IoQueueMessageType&gt;().Single(p =&gt; p.Code == integrationException.QueueMessageTypeName),
+                QueueMessageState = QueueMessageStates.Ready,
+                GroupCode = null,
+                ProcessCode = string.IsNullOrEmpty(integrationException.ProcessCode) ? Guid.NewGuid().ToString() : integrationException.ProcessCode,
+                Mandant = session.Query&lt;WmsMandant&gt;().Single(p =&gt; p.PartnerCode == MandantCode),
+                QueueIn = currentMessage,
+                Data = SerializationHelper.SerializeToBytes(ErrorMessage),
+                RequiredProcessDate = DateTime.Now,
+                Message = integrationException.Message,
+                Selector = integrationException.Selector,
+                Uri = integrationException.Uri
+            }</mca:CSharpValue>
+                                                                  </InArgument>
+                                                                </Assign.Value>
+                                                              </Assign>
+                                                              <FlowStep.Next>
+                                                                <FlowStep x:Name="__ReferenceID5" sap2010:WorkflowViewState.IdRef="FlowStep_92">
+                                                                  <mwad:EntityAdd Entities="{x:Null}" DisplayName="OUT" sap2010:WorkflowViewState.IdRef="EntityAdd_2">
+                                                                    <mwad:EntityAdd.Entity>
+                                                                      <InArgument x:TypeArguments="x:Object">
+                                                                        <mca:CSharpValue x:TypeArguments="x:Object">ioQueueOut</mca:CSharpValue>
+                                                                      </InArgument>
+                                                                    </mwad:EntityAdd.Entity>
+                                                                  </mwad:EntityAdd>
+                                                                </FlowStep>
+                                                              </FlowStep.Next>
+                                                            </FlowStep>
+                                                          </FlowStep.Next>
+                                                        </FlowStep>
+                                                      </FlowStep.Next>
+                                                    </FlowStep>
+                                                  </Flowchart.StartNode>
+                                                  <x:Reference>__ReferenceID2</x:Reference>
+                                                  <x:Reference>__ReferenceID3</x:Reference>
+                                                  <x:Reference>__ReferenceID4</x:Reference>
+                                                  <x:Reference>__ReferenceID5</x:Reference>
+                                                </Flowchart>
+                                                <FlowStep.Next>
+                                                  <FlowStep x:Name="__ReferenceID6" sap2010:WorkflowViewState.IdRef="FlowStep_84">
+                                                    <Sequence DisplayName="меняем статус PROCESSING =&gt; ERROR" sap2010:WorkflowViewState.IdRef="Sequence_13">
+                                                      <mwam:Log SkipFaultTrace="{x:Null}" sap2010:WorkflowViewState.IdRef="Log_4" Level="Debug" Message="Ошибка обработки сообщения очереди">
+                                                        <mwam:Log.Exception>
+                                                          <InArgument x:TypeArguments="s:Exception">
+                                                            <mca:CSharpValue x:TypeArguments="s:Exception">exception</mca:CSharpValue>
+                                                          </InArgument>
+                                                        </mwam:Log.Exception>
+                                                      </mwam:Log>
+                                                      <mwad:EntityLinqQuery x:TypeArguments="mwme:IoQueueIn" DisplayName="Перевычитываем сообщение" sap2010:WorkflowViewState.IdRef="EntityLinqQuery`1_12" IsNeedCheckExistence="True">
+                                                        <mwad:EntityLinqQuery.Result>
+                                                          <OutArgument x:TypeArguments="mwme:IoQueueIn">
+                                                            <mca:CSharpReference x:TypeArguments="mwme:IoQueueIn">currentMessage</mca:CSharpReference>
+                                                          </OutArgument>
+                                                        </mwad:EntityLinqQuery.Result>
+                                                        <InArgument x:TypeArguments="sle:Expression(s:Func(mwme:IoQueueIn, x:Boolean))">
+                                                          <mca:CSharpValue x:TypeArguments="sle:Expression(s:Func(mwme:IoQueueIn, x:Boolean))">i =&gt; i.ID == currentMessage.ID</mca:CSharpValue>
+                                                        </InArgument>
+                                                      </mwad:EntityLinqQuery>
+                                                      <Assign DisplayName="Меняем статус" sap2010:WorkflowViewState.IdRef="Assign_47">
+                                                        <Assign.To>
+                                                          <OutArgument x:TypeArguments="mwme:QueueMessageStates">
+                                                            <mca:CSharpReference x:TypeArguments="mwme:QueueMessageStates">currentMessage.QueueMessageState</mca:CSharpReference>
+                                                          </OutArgument>
+                                                        </Assign.To>
+                                                        <Assign.Value>
+                                                          <InArgument x:TypeArguments="mwme:QueueMessageStates">
+                                                            <mca:CSharpValue x:TypeArguments="mwme:QueueMessageStates">QueueMessageStates.Error</mca:CSharpValue>
+                                                          </InArgument>
+                                                        </Assign.Value>
+                                                      </Assign>
+                                                      <Assign DisplayName="Сообщение об ошибке" sap2010:WorkflowViewState.IdRef="Assign_48">
+                                                        <Assign.To>
+                                                          <OutArgument x:TypeArguments="x:String">
+                                                            <mca:CSharpReference x:TypeArguments="x:String">currentMessage.Message</mca:CSharpReference>
+                                                          </OutArgument>
+                                                        </Assign.To>
+                                                        <Assign.Value>
+                                                          <InArgument x:TypeArguments="x:String">
+                                                            <mca:CSharpValue x:TypeArguments="x:String">exception.Message</mca:CSharpValue>
+                                                          </InArgument>
+                                                        </Assign.Value>
+                                                      </Assign>
+                                                    </Sequence>
+                                                  </FlowStep>
+                                                </FlowStep.Next>
+                                              </FlowStep>
+                                            </FlowDecision.True>
+                                            <FlowDecision.False>
+                                              <x:Reference>__ReferenceID6</x:Reference>
+                                            </FlowDecision.False>
+                                          </FlowDecision>
+                                        </FlowStep.Next>
+                                      </FlowStep>
+                                    </Flowchart.StartNode>
+                                    <x:Reference>__ReferenceID7</x:Reference>
+                                    <x:Reference>__ReferenceID6</x:Reference>
+                                    <x:Reference>__ReferenceID8</x:Reference>
+                                    <x:Reference>__ReferenceID9</x:Reference>
+                                  </Flowchart>
+                                </mwad:SessionScope>
+                              </ActivityAction>
+                            </Catch>
+                          </TryCatch.Catches>
+                        </TryCatch>
+                      </If.Then>
+                    </If>
+                  </Sequence>
+                </DoWhile>
+              </FlowStep>
+            </FlowDecision.True>
+          </FlowDecision>
+        </FlowStep.Next>
+      </FlowStep>
+    </Flowchart.StartNode>
+    <x:Reference>__ReferenceID10</x:Reference>
+    <x:Reference>__ReferenceID11</x:Reference>
+    <x:Reference>__ReferenceID12</x:Reference>
+    <sads:DebugSymbol.Symbol>d2hEOlxQcm9qZWN0XE1MQy5XbXMuV2ViQXBwXHNyY1xNTEMuV21zXE1MQy5XbXMuV29ya2Zsb3dzXFdmX0RhdGFcSU5URUdSQVRJT04uSU4kTUFJTl9ET1dISUxFJDEuMC4wLjAueGFtbE1bA+QDDwIBAWIJiAEVAwHkAowBD4wBcAMB3QKQARHZAxsCAQJoD3MYAwH2AnYTgQEcAwHlApIBFZIBagMB1gKUARPYAx4CAQNwFXB3AwH/AmsVa2oDAfcCfhl+tgEDAe4CeRl5fgMB5gKVARW5ASkDAa4CugEV1wMaAgEElgEXuAEiAwGvAr0BG70BcAIBBcEBGdUDJAIBDJcBGaIBMAMBxwKjARm3AR4DAbACwwEdnAIxAwG9AaQCIdEDNQIBDZoBH5oBeQMBzwKeAR2gAU4DAcgCpgEfpgF0AwGxAqoBHbUBJgMBuALEAR+bAioDAb4BpQIj0AMvAgEOsgEjsgGNAQMBwAKtASOtAZgBAwG5AsgBIdEBOAMBnQLSASHhASoDAYwC4gEh9gEmAwHyAfcBIYICOAMB4QGDAiGOAioDAdABjwIhmgIqAwG/AasCKbYCMgMBqgG6Ai+6AtYBAwGhAZYDNcADQAIBXL4CMZMDPQIBD8sBJ8sBgQEDAaYCzwElzwGtAQMBngLaASfeASADAZUC1QEn1QGOAQMBjQLlASflAZUBAwHzAekBJfQBLgMB+wH6ASf6AYQBAwHqAf8BJ/8BhgEDAeIBiwIniwJpAwHZAYYCJ4YCgwEDAdEBlwInlwKQAQMByAGSAieSApwBAwHAAbMCL7MCqAEDAbQBrgIvrgKfAQMBqwGXAzedA0IDAZYBngM3pwNOAwGDAagDN7MDQAIBcLQDN78DQAIBXcYCN8wCSQIBT88CO+ICRAIBNuUCP/0CSAIBHYADQ4YDVAIBEPEBK/EBcAMBhALsASvsAYIBAwH8AZcDmQGXA70BAwGgAZoDPZoDhwEDAZcBoQM9oQOXAQMBjQGlAzulA8MBAwGEAbADPbADogECAXqrAz2rA7IBAgFxvAM9vAOMAQIBZ7cDPbcDmQECAV7JAj3JAowBAgFQ1wJB3wIkAgFD0gJB0gKdAQIBN+0CRfoCIAIBKugCRegCnAECAR6DA0mDA5EBAgER</sads:DebugSymbol.Symbol>
+  </Flowchart>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="Assign_45" sap:VirtualizedContainerService.HintSize="242,62">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_46" sap:VirtualizedContainerService.HintSize="242,62">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_81">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">179,219</av:Point>
+            <av:Size x:Key="ShapeSize">242,62</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">229.895,189.5 229.895,219.5 230,219.5 230,234.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_82">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">179,119</av:Point>
+            <av:Size x:Key="ShapeSize">242,62</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,181 300,219</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Flowchart_16" sap:VirtualizedContainerService.HintSize="200,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
+            <av:Size x:Key="ShapeSize">60,75</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,119</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="EntityLinqQuery`1_11" sap:VirtualizedContainerService.HintSize="464,117">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_37" sap:VirtualizedContainerService.HintSize="242,62" />
+      <sap2010:ViewStateData Id="If_5" sap:VirtualizedContainerService.HintSize="464,212" />
+      <sap2010:ViewStateData Id="Sequence_8" sap:VirtualizedContainerService.HintSize="486,493">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="SessionScope_2" sap:VirtualizedContainerService.HintSize="539,581">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="EntityLinqQuery`1_7" sap:VirtualizedContainerService.HintSize="464,88" />
+      <sap2010:ViewStateData Id="Assign_52" sap:VirtualizedContainerService.HintSize="464,62" />
+      <sap2010:ViewStateData Id="Assign_53" sap:VirtualizedContainerService.HintSize="242,62" />
+      <sap2010:ViewStateData Id="If_7" sap:VirtualizedContainerService.HintSize="464,212" />
+      <sap2010:ViewStateData Id="ExecuteWorkflow_1" sap:VirtualizedContainerService.HintSize="464,22" />
+      <sap2010:ViewStateData Id="Assign_38" sap:VirtualizedContainerService.HintSize="464,62" />
+      <sap2010:ViewStateData Id="Assign_39" sap:VirtualizedContainerService.HintSize="464,62" />
+      <sap2010:ViewStateData Id="Sequence_9" sap:VirtualizedContainerService.HintSize="486,832">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="SessionScope_3" sap:VirtualizedContainerService.HintSize="512,920">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_49" sap:VirtualizedContainerService.HintSize="242,62">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="SessionGet_1" sap:VirtualizedContainerService.HintSize="200,22">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_50" sap:VirtualizedContainerService.HintSize="242,62">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Assign_51" sap:VirtualizedContainerService.HintSize="242,62" />
+      <sap2010:ViewStateData Id="EntityAdd_2" sap:VirtualizedContainerService.HintSize="200,62" />
+      <sap2010:ViewStateData Id="FlowStep_92">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">200,429</av:Point>
+            <av:Size x:Key="ShapeSize">200,62</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_88">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">179,309</av:Point>
+            <av:Size x:Key="ShapeSize">242,62</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,371 300,429</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_89">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">179,189</av:Point>
+            <av:Size x:Key="ShapeSize">242,62</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,251 300,309</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_90">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">200,117.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,22</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,139.5 300,189</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Flowchart_18" sap:VirtualizedContainerService.HintSize="614,636">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
+            <av:Size x:Key="ShapeSize">60,75</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,117.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Log_4" sap:VirtualizedContainerService.HintSize="265,62" />
+      <sap2010:ViewStateData Id="EntityLinqQuery`1_12" sap:VirtualizedContainerService.HintSize="265,88" />
+      <sap2010:ViewStateData Id="Assign_47" sap:VirtualizedContainerService.HintSize="265,62" />
+      <sap2010:ViewStateData Id="Assign_48" sap:VirtualizedContainerService.HintSize="265,62" />
+      <sap2010:ViewStateData Id="Sequence_13" sap:VirtualizedContainerService.HintSize="200,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_84">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">10,474.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,51</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_85">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">10,334.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,51</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">110,385.5 110,474.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowDecision_2" sap:VirtualizedContainerService.HintSize="70,87">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <av:Point x:Key="ShapeLocation">235,216.5</av:Point>
+            <av:Size x:Key="ShapeSize">70,87</av:Size>
+            <av:PointCollection x:Key="FalseConnector">305,260 335,260 335,500 210,500</av:PointCollection>
+            <av:PointCollection x:Key="TrueConnector">235,260 110,260 110,334.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_86">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">149,119</av:Point>
+            <av:Size x:Key="ShapeSize">242,62</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">270,181 270,216.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Flowchart_17" sap:VirtualizedContainerService.HintSize="200,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <av:Point x:Key="ShapeLocation">240,12.5</av:Point>
+            <av:Size x:Key="ShapeSize">60,75</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">270,87.5 270,119</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="SessionScope_5" sap:VirtualizedContainerService.HintSize="226,148" />
+      <sap2010:ViewStateData Id="Catch`1_2" sap:VirtualizedContainerService.HintSize="400,221">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="TryCatch_2" sap:VirtualizedContainerService.HintSize="414,383">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="If_6" sap:VirtualizedContainerService.HintSize="539,533" />
+      <sap2010:ViewStateData Id="Sequence_11" sap:VirtualizedContainerService.HintSize="561,1278">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="DoWhile_2" sap:VirtualizedContainerService.HintSize="587,1442" />
+      <sap2010:ViewStateData Id="FlowStep_80">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">10,364.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,51</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowDecision_1" sap:VirtualizedContainerService.HintSize="70,87">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <av:Point x:Key="ShapeLocation">195,226.5</av:Point>
+            <av:Size x:Key="ShapeSize">70,87</av:Size>
+            <av:PointCollection x:Key="TrueConnector">195,270 110,270 110,364.5</av:PointCollection>
+            <x:String x:Key="FalseLabel">MandantCode должен быть обязательный</x:String>
+            <x:String x:Key="TrueLabel">к циклу</x:String>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_83">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">130,124.5</av:Point>
+            <av:Size x:Key="ShapeSize">200,51</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">230,175.5 230,226.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Flowchart_15" sap:VirtualizedContainerService.HintSize="614,636">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <av:Point x:Key="ShapeLocation">200,12.5</av:Point>
+            <av:Size x:Key="ShapeSize">60,75</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">230,87.5 230,124.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="MLC.Wms.Workflows.Wf_Data.INTEGRATION_IN_MAIN_1" sap:VirtualizedContainerService.HintSize="654,716" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

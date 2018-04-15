@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<topic id="ca72c7d5-8b37-4c3f-a20c-c85df14825b7" revisionNumber="1">
+	<developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <introduction>
+    </introduction>
+
+    <section>
+      <title>История изменений</title>
+      <content>
+        <para>Выберите версию ниже для детализации изменений.</para>
+
+        <list class="bullet">
+          <listItem>
+            <para>
+              <link xlink:href="60e8d7db-d032-410e-bdd1-986a19f83a5d" />
+            </para>
+          </listItem>
+
+        </list>
+
+      </content>
+    </section>
+
+		<relatedTopics>
+			<link xlink:href="6ec6f56f-40e8-4c96-bf94-5e089d5131f7" />
+		</relatedTopics>
+
+	</developerConceptualDocument>
+</topic>

@@ -1,0 +1,487 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:ser="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:tns="http://wms.my.ru/services/v1/entities" elementFormDefault="qualified" targetNamespace="http://wms.my.ru/services/v1/entities" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+  <xs:complexType name="ArticleLoad">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ArtList" nillable="true" type="tns:ArrayOfArt" />
+      <xs:element minOccurs="0" name="CommandList" nillable="true" xmlns:q1="http://schemas.microsoft.com/2003/10/Serialization/Arrays" type="q1:ArrayOfKeyValueOfstringstring" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArticleLoad" nillable="true" type="tns:ArticleLoad" />
+  <xs:complexType name="ArrayOfArt">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Art" nillable="true" type="tns:Art" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfArt" nillable="true" type="tns:ArrayOfArt" />
+  <xs:complexType name="Art">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ABCD" type="ser:char" />
+      <xs:element minOccurs="0" name="ArtPicture" nillable="true" type="tns:ArtPicture" />
+      <xs:element minOccurs="0" name="Brand" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Color" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ColorTone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CommercTime" type="xs:int" />
+      <xs:element minOccurs="0" name="CommercTimeMeasure" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CountryCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DangerLevel" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DangerSubLevel" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DescriptionExt" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FactoryHostRef" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HostRef" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IWBType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LifeTime" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="LifeTimeMeasure" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MandantCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Manufacturer" nillable="true" type="tns:Mandant" />
+      <xs:element minOccurs="0" name="Mark" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Model" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PickOrder" type="xs:int" />
+      <xs:element minOccurs="0" name="Size" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TempMax" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="TempMin" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Type" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Art" nillable="true" type="tns:Art" />
+  <xs:complexType name="ArtPicture">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Entity" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FileData" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Key" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Link" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Size" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Version" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArtPicture" nillable="true" type="tns:ArtPicture" />
+  <xs:complexType name="Mandant">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="PartnerBIK" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PartnerCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PartnerCommercTime" type="xs:int" />
+      <xs:element minOccurs="0" name="PartnerCommercTimeMeasure" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PartnerContract" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PartnerCorrespondentAccount" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PartnerDateContract" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="PartnerEmail" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PartnerFax" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PartnerFullName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PartnerHostRef" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PartnerID" type="xs:int" />
+      <xs:element minOccurs="0" name="PartnerINN" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PartnerKPP" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PartnerKind" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PartnerLocked" type="xs:boolean" />
+      <xs:element minOccurs="0" name="PartnerName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PartnerOGRN" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PartnerOKPO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PartnerOKVED" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PartnerPhone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PartnerSettlementAccount" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Mandant" nillable="true" type="tns:Mandant" />
+  <xs:complexType name="Command">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Command" nillable="true" type="tns:Command" />
+  <xs:complexType name="DSState">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CommandList" nillable="true" type="tns:ArrayOfCommand" />
+      <xs:element minOccurs="0" name="DeliveryServiceRef" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ErrorMessage" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OWBName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OperationDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="PartnerOrder" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PlannedDeliveryDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="State" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StateDetail" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="DSState" nillable="true" type="tns:DSState" />
+  <xs:complexType name="ArrayOfCommand">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Command" nillable="true" type="tns:Command" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCommand" nillable="true" type="tns:ArrayOfCommand" />
+  <xs:complexType name="ErrorInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CallStack" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ErrorType" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="QueueMessageTypeName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Uri" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ErrorInfo" nillable="true" type="tns:ErrorInfo" />
+  <xs:complexType name="ErrorMessage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CommandList" nillable="true" type="tns:ArrayOfCommand" />
+      <xs:element minOccurs="0" name="ErrorInfoList" nillable="true" type="tns:ArrayOfErrorInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ErrorMessage" nillable="true" type="tns:ErrorMessage" />
+  <xs:complexType name="ArrayOfErrorInfo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="ErrorInfo" nillable="true" type="tns:ErrorInfo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfErrorInfo" nillable="true" type="tns:ArrayOfErrorInfo" />
+  <xs:complexType name="UniversalCommandMessage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CommandList" nillable="true" type="tns:ArrayOfCommand" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UniversalCommandMessage" nillable="true" type="tns:UniversalCommandMessage" />
+  <xs:complexType name="WHSIWBCommandMessage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CommandList" nillable="true" type="tns:ArrayOfCommand" />
+      <xs:element minOccurs="0" name="IWBList" nillable="true" type="tns:ArrayOfIWB" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WHSIWBCommandMessage" nillable="true" type="tns:WHSIWBCommandMessage" />
+  <xs:complexType name="ArrayOfIWB">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="IWB" nillable="true" type="tns:IWB" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfIWB" nillable="true" type="tns:ArrayOfIWB" />
+  <xs:complexType name="IWB">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CMRDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CMRNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CPVList" nillable="true" type="tns:ArrayOfCPV" />
+      <xs:element minOccurs="0" name="CommandList" nillable="true" type="tns:ArrayOfCommand" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FactoryHostRef" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Group" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HostRef" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IWBPosList" nillable="true" type="tns:ArrayOfIWBPos" />
+      <xs:element minOccurs="0" name="InDatePlan" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="MandantCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OrderReturn" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PayerHostRef" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Priority" type="xs:int" />
+      <xs:element minOccurs="0" name="ProductList" nillable="true" type="tns:ArrayOfProduct" />
+      <xs:element minOccurs="0" name="Recipient" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SenderHostRef" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StatusCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TypeCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="IWB" nillable="true" type="tns:IWB" />
+  <xs:complexType name="ArrayOfCPV">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CPV" nillable="true" type="tns:CPV" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCPV" nillable="true" type="tns:ArrayOfCPV" />
+  <xs:complexType name="CPV">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Value" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CPV" nillable="true" type="tns:CPV" />
+  <xs:complexType name="ArrayOfIWBPos">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="IWBPos" nillable="true" type="tns:IWBPos" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfIWBPos" nillable="true" type="tns:ArrayOfIWBPos" />
+  <xs:complexType name="IWBPos">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ArtHostRef" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ArtName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Batch" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BatchCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BoxNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CPVList" nillable="true" type="tns:ArrayOfCPV" />
+      <xs:element minOccurs="0" name="Color" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Count" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Count2SKU" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="ExpiryDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FactoryHostRef" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GTD" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HostRef" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="InvoiceDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="InvoiceNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsManual" type="xs:boolean" />
+      <xs:element minOccurs="0" name="KitArtName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Line" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Lot" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MeasureCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Owner" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PriceValue" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="Priority" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ProductCount" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="ProductDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="QLFCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="QLFDetailCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SerialNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Size" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StatusCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TECode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Tone" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="IWBPos" nillable="true" type="tns:IWBPos" />
+  <xs:complexType name="ArrayOfProduct">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Product" nillable="true" type="tns:Product" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfProduct" nillable="true" type="tns:ArrayOfProduct" />
+  <xs:complexType name="Product">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ArtHostRef" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ArtName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Batch" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BatchCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BoxNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Color" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Count" type="xs:int" />
+      <xs:element minOccurs="0" name="Count2SKU" type="xs:double" />
+      <xs:element minOccurs="0" name="CountryCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ExpiryDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FactoryHostRef" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="GTD" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HostRef" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IWBPosID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="InputDate" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="KitArtName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Line" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Lot" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MandantCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MeasureCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OWBPosID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="OwnerCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Pack" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PackCountSKU" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Priority" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ProductDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="QLFCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="QLFDetailCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SerialNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Size" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StatusCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TECode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TTEQuantity" type="xs:int" />
+      <xs:element minOccurs="0" name="Tone" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Product" nillable="true" type="tns:Product" />
+  <xs:complexType name="WHSOWBCommandMessage">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CommandList" nillable="true" type="tns:ArrayOfCommand" />
+      <xs:element minOccurs="0" name="OWBList" nillable="true" type="tns:ArrayOfOWB" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="WHSOWBCommandMessage" nillable="true" type="tns:WHSOWBCommandMessage" />
+  <xs:complexType name="ArrayOfOWB">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OWB" nillable="true" type="tns:OWB" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOWB" nillable="true" type="tns:ArrayOfOWB" />
+  <xs:complexType name="OWB">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Address" nillable="true" type="tns:AddressBook" />
+      <xs:element minOccurs="0" name="CPVList" nillable="true" type="tns:ArrayOfCPV" />
+      <xs:element minOccurs="0" name="CargoSpaceList" nillable="true" type="tns:ArrayOfCargoSpace" />
+      <xs:element minOccurs="0" name="Carrier" nillable="true" type="tns:Partner" />
+      <xs:element minOccurs="0" name="ClientPayerHostRef" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ClientRecipient" nillable="true" type="tns:EcomClient" />
+      <xs:element minOccurs="0" name="CommandList" nillable="true" type="tns:ArrayOfCommand" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FactoryHostRef" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Group" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HostRef" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HostRefDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="MandantCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OWBPosList" nillable="true" type="tns:ArrayOfOWBPos" />
+      <xs:element minOccurs="0" name="OutDatePlan" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="OwnerCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PartnerOrder" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PayerHostRef" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PlannedDeliveryDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Priority" type="xs:int" />
+      <xs:element minOccurs="0" name="ProductList" nillable="true" type="tns:ArrayOfProduct" />
+      <xs:element minOccurs="0" name="ProxyDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ProxyNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RecipientHostRef" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RoutePlan" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="StatusCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TypeCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OWB" nillable="true" type="tns:OWB" />
+  <xs:complexType name="AddressBook">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Apartment" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Building" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="City" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Country" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Default" nillable="true" type="xs:boolean" />
+      <xs:element minOccurs="0" name="District" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HostRef" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Index" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="Raw" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Region" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Street" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TypeCode" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="AddressBook" nillable="true" type="tns:AddressBook" />
+  <xs:complexType name="ArrayOfCargoSpace">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CargoSpace" nillable="true" type="tns:CargoSpace" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfCargoSpace" nillable="true" type="tns:ArrayOfCargoSpace" />
+  <xs:complexType name="CargoSpace">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CarrierBaseCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CarrierStreakCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Code" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CreationPlace" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CurrentPlace" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Height" type="xs:int" />
+      <xs:element minOccurs="0" name="HostRef" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Length" type="xs:int" />
+      <xs:element minOccurs="0" name="MaxWeight" type="xs:decimal" />
+      <xs:element minOccurs="0" name="PackStatus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StatusCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="TareWeight" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="TypeCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Volume" type="xs:int" />
+      <xs:element minOccurs="0" name="Weight" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Width" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CargoSpace" nillable="true" type="tns:CargoSpace" />
+  <xs:complexType name="Partner">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddressList" nillable="true" type="tns:ArrayOfAddressBook" />
+      <xs:element minOccurs="0" name="BIK" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Contract" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CorrespondentAccount" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="DateContract" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Fax" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FullName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HostRef" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="INN" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="KPP" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Kind" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OGRN" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OKPO" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="OKVED" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Phone" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="SettlementAccount" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Partner" nillable="true" type="tns:Partner" />
+  <xs:complexType name="ArrayOfAddressBook">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="AddressBook" nillable="true" type="tns:AddressBook" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfAddressBook" nillable="true" type="tns:ArrayOfAddressBook" />
+  <xs:complexType name="EcomClient">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="AddressList" nillable="true" type="tns:ArrayOfAddressBook" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HostRef" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="LastName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MiddleName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Name" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PhoneHome" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PhoneInternal" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PhoneMobile" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PhoneWork" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="EcomClient" nillable="true" type="tns:EcomClient" />
+  <xs:complexType name="ArrayOfOWBPos">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OWBPos" nillable="true" type="tns:OWBPos" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfOWBPos" nillable="true" type="tns:ArrayOfOWBPos" />
+  <xs:complexType name="OWBPos">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="ArtDesc" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ArtHostRef" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ArtName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Batch" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="BoxNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CPVList" nillable="true" type="tns:ArrayOfCPV" />
+      <xs:element minOccurs="0" name="Color" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Count" type="xs:int" />
+      <xs:element minOccurs="0" name="Count2SKU" type="xs:double" />
+      <xs:element minOccurs="0" name="ExpiryDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FactoryHostRef" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="HostRef" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="ID" type="xs:int" />
+      <xs:element minOccurs="0" name="KitArtName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Line" type="xs:int" />
+      <xs:element minOccurs="0" name="Lot" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="MeasureCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Owner" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="PriceValue" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="PriceValueVAT" nillable="true" type="xs:double" />
+      <xs:element minOccurs="0" name="ProductDate" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="QLFCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="QLFDetailCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Reserved" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="SerialNumber" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Size" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="StatusCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Tone" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="OWBPos" nillable="true" type="tns:OWBPos" />
+  <xs:complexType name="IsoCountry">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CountryAlpha2" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CountryCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CountryNameEng" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CountryNameRus" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="CountryNumeric" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="IsoCountry" nillable="true" type="tns:IsoCountry" />
+  <xs:complexType name="Factory">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="FactoryBatchCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FactoryCode" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FactoryDesc" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FactoryHostRef" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="FactoryID" type="xs:int" />
+      <xs:element minOccurs="0" name="FactoryName" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Partner" nillable="true" type="tns:Mandant" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="Factory" nillable="true" type="tns:Factory" />
+</xs:schema>

@@ -1,0 +1,19 @@
+﻿@using FastReport.Web
+@{
+    ViewBag.Title = "Отчеты";
+}
+
+@section masterhead
+{
+    @WebReportGlobals.Scripts()
+    @WebReportGlobals.Styles()
+}
+
+@*<div style="float:right">
+    @using (Html.BeginForm("GetFile", "Home"))
+    {
+        <input id="pdf" type="submit" value="Печать" />
+    }
+</div>*@
+
+@ViewBag.WebReport.GetHtml()

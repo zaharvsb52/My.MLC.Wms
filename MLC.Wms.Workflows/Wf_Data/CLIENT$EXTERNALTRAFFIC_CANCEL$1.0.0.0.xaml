@@ -1,0 +1,523 @@
+﻿<Activity mc:Ignorable="sap sap2010 sads" x:Class="MLC.Wms.Workflows.Wf_Data.EXTERNALTRAFFIC_CANCEL"
+ xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities"
+ xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+ xmlns:mca="clr-namespace:Microsoft.CSharp.Activities;assembly=System.Activities"
+ xmlns:mwac="clr-namespace:MLC.WF.Activities.Communication;assembly=MLC.WF.Activities"
+ xmlns:mwad="clr-namespace:MLC.WF.Activities.DataAccess;assembly=MLC.WF.Activities"
+ xmlns:mwam="clr-namespace:MLC.WF.Activities.Manage;assembly=MLC.WF.Activities"
+ xmlns:mwcm="clr-namespace:MLC.WF.Core.Models;assembly=MLC.WF.Core"
+ xmlns:mwme="clr-namespace:MLC.Wms.Model.Entities;assembly=MLC.Wms.Model"
+ xmlns:mwwac="clr-namespace:MLC.Wms.WF.Activities.Communication;assembly=MLC.Wms.WF.Activities"
+ xmlns:n="clr-namespace:NHibernate;assembly=NHibernate"
+ xmlns:s="clr-namespace:System;assembly=mscorlib"
+ xmlns:sads="http://schemas.microsoft.com/netfx/2010/xaml/activities/debugger"
+ xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation"
+ xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation"
+ xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib"
+ xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=mscorlib"
+ xmlns:sle="clr-namespace:System.Linq.Expressions;assembly=System.Core"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="EntityId" Type="InArgument(x:String)" />
+  </x:Members>
+  <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
+  <sap2010:WorkflowViewState.IdRef>MLC.Wms.Workflows.Wf_Data.CLIENT_EXTERNALTRAFFIC_CANCEL_1_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>MLC.Wms.Model.Entities</x:String>
+      <x:String>NHibernate</x:String>
+      <x:String>NHibernate.Linq</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Iesi.Collections</AssemblyReference>
+      <AssemblyReference>log4net</AssemblyReference>
+      <AssemblyReference>Microsoft.Activities.Extensions</AssemblyReference>
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>Microsoft.Practices.Unity</AssemblyReference>
+      <AssemblyReference>Microsoft.Practices.Unity.Configuration</AssemblyReference>
+      <AssemblyReference>Microsoft.Practices.Unity.RegistrationByConvention</AssemblyReference>
+      <AssemblyReference>MLC.WF.Activities</AssemblyReference>
+      <AssemblyReference>MLC.WF.Core</AssemblyReference>
+      <AssemblyReference>Newtonsoft.Json</AssemblyReference>
+      <AssemblyReference>NHibernate</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Activities.DurableInstancing</AssemblyReference>
+      <AssemblyReference>System.Activities.Presentation</AssemblyReference>
+      <AssemblyReference>System.Configuration</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Resources.ResourceManager</AssemblyReference>
+      <AssemblyReference>System.Runtime</AssemblyReference>
+      <AssemblyReference>System.Runtime.DurableInstancing</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Web</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>WebClient.Common</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>MLC.Wms.Common</AssemblyReference>
+      <AssemblyReference>MLC.Wms.Model</AssemblyReference>
+      <AssemblyReference>MLC.Wms.WF.Activities</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>MLC.Wms.Workflows</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Flowchart DisplayName="73694838-CB41-4AA0-8CC3-2C497DBB2EA9" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+    <Flowchart.Variables>
+      <Variable x:TypeArguments="mwme:YExternalTraffic" Name="entity" />
+      <Variable x:TypeArguments="x:String" Name="actionCode" />
+      <Variable x:TypeArguments="x:String" Name="errorMessage" />
+    </Flowchart.Variables>
+    <Flowchart.StartNode>
+      <FlowStep x:Name="__ReferenceID4" sap2010:WorkflowViewState.IdRef="FlowStep_4">
+        <mwad:SessionScope sap2010:WorkflowViewState.IdRef="SessionScope_1">
+          <Sequence sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <mwad:EntityLinqQuery x:TypeArguments="mwme:YExternalTraffic" DisplayName="Получим рейс" sap2010:WorkflowViewState.IdRef="EntityLinqQuery`1_1" IsNeedCheckExistence="True">
+              <mwad:EntityLinqQuery.Result>
+                <OutArgument x:TypeArguments="mwme:YExternalTraffic">
+                  <mca:CSharpReference x:TypeArguments="mwme:YExternalTraffic">entity</mca:CSharpReference>
+                </OutArgument>
+              </mwad:EntityLinqQuery.Result>
+              <InArgument x:TypeArguments="sle:Expression(s:Func(mwme:YExternalTraffic, x:Boolean))">
+                <mca:CSharpValue x:TypeArguments="sle:Expression(s:Func(mwme:YExternalTraffic, x:Boolean))">y =&gt; y.ExternalTrafficID == Int32.Parse(EntityId)</mca:CSharpValue>
+              </InArgument>
+            </mwad:EntityLinqQuery>
+            <If DisplayName="Проверка статуса" sap2010:WorkflowViewState.IdRef="If_1">
+              <If.Condition>
+                <InArgument x:TypeArguments="x:Boolean">
+                  <mca:CSharpValue x:TypeArguments="x:Boolean">entity.Status.StatusCode != "CAR_PLAN" &amp;&amp; entity.Status.StatusCode != "CAR_ONTHEWAY" &amp;&amp; entity.Status.StatusCode != "CAR_ARRIVED"</mca:CSharpValue>
+                </InArgument>
+              </If.Condition>
+              <If.Then>
+                <Assign DisplayName="Сообщение об ошибке" sap2010:WorkflowViewState.IdRef="Assign_5">
+                  <Assign.To>
+                    <OutArgument x:TypeArguments="x:String">
+                      <mca:CSharpReference x:TypeArguments="x:String">errorMessage</mca:CSharpReference>
+                    </OutArgument>
+                  </Assign.To>
+                  <Assign.Value>
+                    <InArgument x:TypeArguments="x:String">
+                      <mca:CSharpValue x:TypeArguments="x:String">string.Format("Аннуляция в статусе '{0}' запрещена", entity.Status.StatusName)</mca:CSharpValue>
+                    </InArgument>
+                  </Assign.Value>
+                </Assign>
+              </If.Then>
+            </If>
+          </Sequence>
+        </mwad:SessionScope>
+        <FlowStep.Next>
+          <FlowDecision x:Name="__ReferenceID5" DisplayName="Есть ошибки" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
+            <FlowDecision.Condition>
+              <mca:CSharpValue x:TypeArguments="x:Boolean">!string.IsNullOrEmpty(errorMessage)</mca:CSharpValue>
+            </FlowDecision.Condition>
+            <FlowDecision.True>
+              <FlowStep x:Name="__ReferenceID6" sap2010:WorkflowViewState.IdRef="FlowStep_2">
+                <mwwac:MessageBox sap2010:WorkflowViewState.IdRef="MessageBox_1" Title="Аннуляция рейса">
+                  <mwwac:MessageBox.ActionCode>
+                    <OutArgument x:TypeArguments="x:String">
+                      <mca:CSharpReference x:TypeArguments="x:String">actionCode</mca:CSharpReference>
+                    </OutArgument>
+                  </mwwac:MessageBox.ActionCode>
+                  <mwwac:MessageBox.Actions>
+                    <InArgument x:TypeArguments="mwcm:WfActionsModel">
+                      <mca:CSharpValue x:TypeArguments="mwcm:WfActionsModel">null</mca:CSharpValue>
+                    </InArgument>
+                  </mwwac:MessageBox.Actions>
+                  <mwwac:MessageBox.Message>
+                    <InArgument x:TypeArguments="x:String">
+                      <mca:CSharpValue x:TypeArguments="x:String">errorMessage</mca:CSharpValue>
+                    </InArgument>
+                  </mwwac:MessageBox.Message>
+                </mwwac:MessageBox>
+                <FlowStep.Next>
+                  <FlowStep x:Name="__ReferenceID7" sap2010:WorkflowViewState.IdRef="FlowStep_1">
+                    <mwam:Exit sap2010:WorkflowViewState.IdRef="Exit_1" />
+                  </FlowStep>
+                </FlowStep.Next>
+              </FlowStep>
+            </FlowDecision.True>
+            <FlowDecision.False>
+              <FlowStep x:Name="__ReferenceID8" sap2010:WorkflowViewState.IdRef="FlowStep_3">
+                <mwad:SessionScope sap2010:WorkflowViewState.IdRef="SessionScope_2">
+                  <Sequence sap2010:WorkflowViewState.IdRef="Sequence_1">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="n:ISession" Name="session" />
+                      <Variable x:TypeArguments="scg:IEnumerable(mwme:YInternalTraffic)" Name="internals" />
+                      <Variable x:TypeArguments="mwme:YInternalTrafficStatus" Name="internalStatus" />
+                    </Sequence.Variables>
+                    <mwad:SessionGet sap2010:WorkflowViewState.IdRef="SessionGet_1">
+                      <mwad:SessionGet.Session>
+                        <OutArgument x:TypeArguments="n:ISession">
+                          <mca:CSharpReference x:TypeArguments="n:ISession">session</mca:CSharpReference>
+                        </OutArgument>
+                      </mwad:SessionGet.Session>
+                    </mwad:SessionGet>
+                    <Assign DisplayName="Перевычитываем" sap2010:WorkflowViewState.IdRef="Assign_4">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="mwme:YExternalTraffic">
+                          <mca:CSharpReference x:TypeArguments="mwme:YExternalTraffic">entity</mca:CSharpReference>
+                        </OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="mwme:YExternalTraffic">
+                          <mca:CSharpValue x:TypeArguments="mwme:YExternalTraffic">session.Query&lt;YExternalTraffic&gt;().First(t =&gt; t.ExternalTrafficID == entity.ExternalTrafficID)</mca:CSharpValue>
+                        </InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <Assign DisplayName="Меняем статус" sap2010:WorkflowViewState.IdRef="Assign_1">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="mwme:YExternalTrafficStatus">
+                          <mca:CSharpReference x:TypeArguments="mwme:YExternalTrafficStatus">entity.Status</mca:CSharpReference>
+                        </OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="mwme:YExternalTrafficStatus">
+                          <mca:CSharpValue x:TypeArguments="mwme:YExternalTrafficStatus">session.Query&lt;YExternalTrafficStatus&gt;().First(s =&gt; s.Status2Entity == "EXTERNALTRAFFIC" &amp;&amp; s.StatusCode == "CAR_CANCELED")</mca:CSharpValue>
+                        </InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <mwad:EntityListLinqQuery x:TypeArguments="mwme:YInternalTraffic" DisplayName="Получаем внутренние рейсы" sap2010:WorkflowViewState.IdRef="EntityListLinqQuery`1_1">
+                      <mwad:EntityListLinqQuery.Result>
+                        <OutArgument x:TypeArguments="scg:IEnumerable(mwme:YInternalTraffic)">
+                          <mca:CSharpReference x:TypeArguments="scg:IEnumerable(mwme:YInternalTraffic)">internals</mca:CSharpReference>
+                        </OutArgument>
+                      </mwad:EntityListLinqQuery.Result>
+                      <InArgument x:TypeArguments="sle:Expression(s:Func(mwme:YInternalTraffic, x:Boolean))">
+                        <mca:CSharpValue x:TypeArguments="sle:Expression(s:Func(mwme:YInternalTraffic, x:Boolean))">i =&gt; i.ExternalTraffic == entity</mca:CSharpValue>
+                      </InArgument>
+                    </mwad:EntityListLinqQuery>
+                    <Assign DisplayName="Статус внутреннего рейса" sap2010:WorkflowViewState.IdRef="Assign_2">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="mwme:YInternalTrafficStatus">
+                          <mca:CSharpReference x:TypeArguments="mwme:YInternalTrafficStatus">internalStatus</mca:CSharpReference>
+                        </OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="mwme:YInternalTrafficStatus">
+                          <mca:CSharpValue x:TypeArguments="mwme:YInternalTrafficStatus">session.Query&lt;YInternalTrafficStatus&gt;().First(s =&gt; s.Status2Entity == "INTERNALTRAFFIC" &amp;&amp; s.StatusCode == "VISITOR_CANCELED")</mca:CSharpValue>
+                        </InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <ForEach x:TypeArguments="mwme:YInternalTraffic" DisplayName="Выставляем статус" sap2010:WorkflowViewState.IdRef="ForEach`1_1">
+                      <ForEach.Values>
+                        <InArgument x:TypeArguments="scg:IEnumerable(mwme:YInternalTraffic)">
+                          <mca:CSharpValue x:TypeArguments="scg:IEnumerable(mwme:YInternalTraffic)">internals</mca:CSharpValue>
+                        </InArgument>
+                      </ForEach.Values>
+                      <ActivityAction x:TypeArguments="mwme:YInternalTraffic">
+                        <ActivityAction.Argument>
+                          <DelegateInArgument x:TypeArguments="mwme:YInternalTraffic" Name="item" />
+                        </ActivityAction.Argument>
+                        <Sequence sap2010:WorkflowViewState.IdRef="Sequence_2">
+                          <Assign DisplayName="Статус" sap2010:WorkflowViewState.IdRef="Assign_3">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="mwme:YInternalTrafficStatus">
+                                <mca:CSharpReference x:TypeArguments="mwme:YInternalTrafficStatus">item.Status</mca:CSharpReference>
+                              </OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="mwme:YInternalTrafficStatus">
+                                <mca:CSharpValue x:TypeArguments="mwme:YInternalTrafficStatus">internalStatus</mca:CSharpValue>
+                              </InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <Flowchart DisplayName="Удаляем груз на приход" sap2010:WorkflowViewState.IdRef="Flowchart_2">
+                            <Flowchart.Variables>
+                              <Variable x:TypeArguments="scg:IEnumerable(mwme:WmsCargoIWB)" Name="cargosIwb" />
+                            </Flowchart.Variables>
+                            <Flowchart.StartNode>
+                              <FlowStep x:Name="__ReferenceID1" sap2010:WorkflowViewState.IdRef="FlowStep_6">
+                                <mwad:EntityListLinqQuery x:TypeArguments="mwme:WmsCargoIWB" DisplayName="Получим груз на приход" sap2010:WorkflowViewState.IdRef="EntityListLinqQuery`1_4">
+                                  <mwad:EntityListLinqQuery.Result>
+                                    <OutArgument x:TypeArguments="scg:IEnumerable(mwme:WmsCargoIWB)">
+                                      <mca:CSharpReference x:TypeArguments="scg:IEnumerable(mwme:WmsCargoIWB)">cargosIwb</mca:CSharpReference>
+                                    </OutArgument>
+                                  </mwad:EntityListLinqQuery.Result>
+                                  <InArgument x:TypeArguments="sle:Expression(s:Func(mwme:WmsCargoIWB, x:Boolean))">
+                                    <mca:CSharpValue x:TypeArguments="sle:Expression(s:Func(mwme:WmsCargoIWB, x:Boolean))">c =&gt; c.InternalTraffic == item</mca:CSharpValue>
+                                  </InArgument>
+                                </mwad:EntityListLinqQuery>
+                                <FlowStep.Next>
+                                  <FlowStep x:Name="__ReferenceID0" sap2010:WorkflowViewState.IdRef="FlowStep_5">
+                                    <mwad:EntityDelete x:TypeArguments="mwme:WmsCargoIWB" Entity="{x:Null}" DisplayName="Удаляем груз на приход" sap2010:WorkflowViewState.IdRef="EntityDelete`1_4">
+                                      <mwad:EntityDelete.Entities>
+                                        <InArgument x:TypeArguments="scg:IEnumerable(mwme:WmsCargoIWB)">
+                                          <mca:CSharpValue x:TypeArguments="scg:IEnumerable(mwme:WmsCargoIWB)">cargosIwb</mca:CSharpValue>
+                                        </InArgument>
+                                      </mwad:EntityDelete.Entities>
+                                    </mwad:EntityDelete>
+                                  </FlowStep>
+                                </FlowStep.Next>
+                              </FlowStep>
+                            </Flowchart.StartNode>
+                            <x:Reference>__ReferenceID0</x:Reference>
+                            <x:Reference>__ReferenceID1</x:Reference>
+                          </Flowchart>
+                          <Flowchart DisplayName="Удаляем груз на расход" sap2010:WorkflowViewState.IdRef="Flowchart_3">
+                            <Flowchart.Variables>
+                              <Variable x:TypeArguments="scg:IEnumerable(mwme:WmsCargoOWB)" Name="cargosOwb" />
+                            </Flowchart.Variables>
+                            <Flowchart.StartNode>
+                              <FlowStep x:Name="__ReferenceID3" sap2010:WorkflowViewState.IdRef="FlowStep_8">
+                                <mwad:EntityListLinqQuery x:TypeArguments="mwme:WmsCargoOWB" DisplayName="Получаем груз на расход" sap2010:WorkflowViewState.IdRef="EntityListLinqQuery`1_5">
+                                  <mwad:EntityListLinqQuery.Result>
+                                    <OutArgument x:TypeArguments="scg:IEnumerable(mwme:WmsCargoOWB)">
+                                      <mca:CSharpReference x:TypeArguments="scg:IEnumerable(mwme:WmsCargoOWB)">cargosOwb</mca:CSharpReference>
+                                    </OutArgument>
+                                  </mwad:EntityListLinqQuery.Result>
+                                  <InArgument x:TypeArguments="sle:Expression(s:Func(mwme:WmsCargoOWB, x:Boolean))">
+                                    <mca:CSharpValue x:TypeArguments="sle:Expression(s:Func(mwme:WmsCargoOWB, x:Boolean))">c =&gt; c.InternalTraffic == item</mca:CSharpValue>
+                                  </InArgument>
+                                </mwad:EntityListLinqQuery>
+                                <FlowStep.Next>
+                                  <FlowStep x:Name="__ReferenceID2" sap2010:WorkflowViewState.IdRef="FlowStep_7">
+                                    <mwad:EntityDelete x:TypeArguments="mwme:WmsCargoOWB" Entity="{x:Null}" DisplayName="Удаляем груз на расход" sap2010:WorkflowViewState.IdRef="EntityDelete`1_5">
+                                      <mwad:EntityDelete.Entities>
+                                        <InArgument x:TypeArguments="scg:IEnumerable(mwme:WmsCargoOWB)">
+                                          <mca:CSharpValue x:TypeArguments="scg:IEnumerable(mwme:WmsCargoOWB)">cargosOwb</mca:CSharpValue>
+                                        </InArgument>
+                                      </mwad:EntityDelete.Entities>
+                                    </mwad:EntityDelete>
+                                  </FlowStep>
+                                </FlowStep.Next>
+                              </FlowStep>
+                            </Flowchart.StartNode>
+                            <x:Reference>__ReferenceID2</x:Reference>
+                            <x:Reference>__ReferenceID3</x:Reference>
+                          </Flowchart>
+                        </Sequence>
+                      </ActivityAction>
+                    </ForEach>
+                  </Sequence>
+                </mwad:SessionScope>
+                <FlowStep.Next>
+                  <FlowStep x:Name="__ReferenceID9" sap2010:WorkflowViewState.IdRef="FlowStep_9">
+                    <mwac:RequestReload sap2010:WorkflowViewState.IdRef="RequestReload_1" />
+                  </FlowStep>
+                </FlowStep.Next>
+              </FlowStep>
+            </FlowDecision.False>
+          </FlowDecision>
+        </FlowStep.Next>
+      </FlowStep>
+    </Flowchart.StartNode>
+    <x:Reference>__ReferenceID4</x:Reference>
+    <x:Reference>__ReferenceID5</x:Reference>
+    <x:Reference>__ReferenceID6</x:Reference>
+    <x:Reference>__ReferenceID7</x:Reference>
+    <x:Reference>__ReferenceID8</x:Reference>
+    <x:Reference>__ReferenceID9</x:Reference>
+    <sads:DebugSymbol.Symbol>d29EOlxub3Nvdl92Z1xzcmNcTUxDLldtcy5XZWJBcHBcc3JjXE1MQy5XbXNcTUxDLldtcy5Xb3JrZmxvd3NcV2ZfRGF0YVxDTElFTlQkRVhURVJOQUxUUkFGRklDX0NBTkNFTCQxLjAuMC4wLnhhbWw1UQPHAg8CAQFZCXsdAwHIAX8Pf3EDAcMBnQERtAIlAgEVtwIVtwJdAgEUgwERkwEkAgEDlgEVlgFLAgECWgt6FgMByQGeAROzAh4CARaGAReGAWcCAQ+QAReQAWECAQqLAReLAWQCAQWDAViDAWkCAQRbDWQkAwHbAWUNeRIDAcoBpAEVqgEnAwG6AasBFbYBHgMBqQG3ARXCAR4DAZgBwwEVzAEwAwGHAc0BFdgBHgIBdtkBFbICHwIBF14TXmwDAeEBYhFiswEDAdwBaBNo4wEDAcsBbBF3GgMB0AGnARunAWoDAbsBswEbswHMAQMBsgGuARuuAXQDAaoBvwEbvwH3AQMBoQG6ARu6AYEBAwGZAcYBG8YBiAEDAZABygEZygGqAQMBiAHVARvVAfsBAgF/0AEb0AGCAQIBd9wBG9wBgAECAW7jARmwAiQCARh0F3SjAQMB1gFvF29pAwHRAeQBG+8BJAIBW/ABG48CJwIBOpACG68CJwIBGewBIewBgAECAWXnASHnAYUBAgFc9gEh/wE8AgFGggIliAI5AgE7lgIhnwI8AgElogIlqAI5AgEa+QEn+QGPAQIBUf0BJf0BrwECAUeFAiuFAosBAgE8mQInmQKPAQIBMJ0CJZ0CrwECASalAiulAosBAgEb</sads:DebugSymbol.Symbol>
+  </Flowchart>
+  <sap2010:WorkflowViewState.ViewStateManager>
+    <sap2010:ViewStateManager>
+      <sap2010:ViewStateData Id="EntityLinqQuery`1_1" sap:VirtualizedContainerService.HintSize="464,88" />
+      <sap2010:ViewStateData Id="Assign_5" sap:VirtualizedContainerService.HintSize="242,62" />
+      <sap2010:ViewStateData Id="If_1" sap:VirtualizedContainerService.HintSize="464,212" />
+      <sap2010:ViewStateData Id="Sequence_3" sap:VirtualizedContainerService.HintSize="486,464">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="SessionScope_1" sap:VirtualizedContainerService.HintSize="512,552">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="MessageBox_1" sap:VirtualizedContainerService.HintSize="200,22">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Exit_1" sap:VirtualizedContainerService.HintSize="200,22">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_1">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">80,1040</av:Point>
+            <av:Size x:Key="ShapeSize">200,22</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_2">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">80,969</av:Point>
+            <av:Size x:Key="ShapeSize">200,22</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">180,991 180,1040</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="SessionGet_1" sap:VirtualizedContainerService.HintSize="294,22" />
+      <sap2010:ViewStateData Id="Assign_4" sap:VirtualizedContainerService.HintSize="294,62" />
+      <sap2010:ViewStateData Id="Assign_1" sap:VirtualizedContainerService.HintSize="294,62" />
+      <sap2010:ViewStateData Id="EntityListLinqQuery`1_1" sap:VirtualizedContainerService.HintSize="294,88" />
+      <sap2010:ViewStateData Id="Assign_2" sap:VirtualizedContainerService.HintSize="294,62" />
+      <sap2010:ViewStateData Id="Assign_3" sap:VirtualizedContainerService.HintSize="242,62" />
+      <sap2010:ViewStateData Id="EntityListLinqQuery`1_4" sap:VirtualizedContainerService.HintSize="260,88" />
+      <sap2010:ViewStateData Id="EntityDelete`1_4" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="FlowStep_5">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">200,319</av:Point>
+            <av:Size x:Key="ShapeSize">200,22</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_6">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">170,156</av:Point>
+            <av:Size x:Key="ShapeSize">260,88</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,244 300,319</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Flowchart_2" sap:VirtualizedContainerService.HintSize="242,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
+            <av:Size x:Key="ShapeSize">60,75</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,156</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="EntityListLinqQuery`1_5" sap:VirtualizedContainerService.HintSize="260,88" />
+      <sap2010:ViewStateData Id="EntityDelete`1_5" sap:VirtualizedContainerService.HintSize="200,22" />
+      <sap2010:ViewStateData Id="FlowStep_7">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">200,309</av:Point>
+            <av:Size x:Key="ShapeSize">200,22</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_8">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">170,156</av:Point>
+            <av:Size x:Key="ShapeSize">260,88</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,244 300,309</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Flowchart_3" sap:VirtualizedContainerService.HintSize="242,51">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
+            <av:Size x:Key="ShapeSize">60,75</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,156</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Sequence_2" sap:VirtualizedContainerService.HintSize="264,368">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="ForEach`1_1" sap:VirtualizedContainerService.HintSize="294,518" />
+      <sap2010:ViewStateData Id="Sequence_1" sap:VirtualizedContainerService.HintSize="316,1138">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="SessionScope_2" sap:VirtualizedContainerService.HintSize="342,1226">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="RequestReload_1" sap:VirtualizedContainerService.HintSize="200,22">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_9">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">440,1869</av:Point>
+            <av:Size x:Key="ShapeSize">200,22</av:Size>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_3">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">520,956</av:Point>
+            <av:Size x:Key="ShapeSize">342,1226</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">691,2182 691,1869 540,1869</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowDecision_1" sap:VirtualizedContainerService.HintSize="77,87">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            <av:Point x:Key="ShapeLocation">328.5,806.5</av:Point>
+            <av:Size x:Key="ShapeSize">77,87</av:Size>
+            <av:PointCollection x:Key="TrueConnector">328.5,850 180,850 180,969</av:PointCollection>
+            <av:PointCollection x:Key="FalseConnector">405.5,850 691,850 691,956</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="FlowStep_4">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <av:Point x:Key="ShapeLocation">110.5,152</av:Point>
+            <av:Size x:Key="ShapeSize">512,552</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">366.5,704 366.5,734 367,734 367,806.5</av:PointCollection>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="Flowchart_1" sap:VirtualizedContainerService.HintSize="876,2218">
+        <sap:WorkflowViewStateService.ViewState>
+          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+            <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
+            <av:Size x:Key="ShapeSize">60,75</av:Size>
+            <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,107.5 366.5,107.5 366.5,152</av:PointCollection>
+            <x:Double x:Key="Height">2182</x:Double>
+            <x:Double x:Key="Width">862</x:Double>
+          </scg:Dictionary>
+        </sap:WorkflowViewStateService.ViewState>
+      </sap2010:ViewStateData>
+      <sap2010:ViewStateData Id="MLC.Wms.Workflows.Wf_Data.CLIENT_EXTERNALTRAFFIC_CANCEL_1_1" sap:VirtualizedContainerService.HintSize="794,2100" />
+    </sap2010:ViewStateManager>
+  </sap2010:WorkflowViewState.ViewStateManager>
+</Activity>

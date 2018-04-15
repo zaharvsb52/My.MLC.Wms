@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<topic id="6ec6f56f-40e8-4c96-bf94-5e089d5131f7" revisionNumber="1">
+	<developerConceptualDocument xmlns="http://ddue.schemas.microsoft.com/authoring/2003/5" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <introduction>
+      <para>Данная документация содержит информацию по формату интеграционного обмена с WMS</para>
+    </introduction>
+
+    <section>
+      <title>Общее описание</title>
+      <content>
+        <para>Интеграционный обмен с WMS осуществляется через унифициорванный контракт обмена ...</para>
+      </content>
+    </section>
+
+		<relatedTopics>
+			<link xlink:href="ca72c7d5-8b37-4c3f-a20c-c85df14825b7" />
+		</relatedTopics>
+	</developerConceptualDocument>
+</topic>

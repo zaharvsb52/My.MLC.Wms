@@ -1,0 +1,26 @@
+﻿.ef-trigger {
+    background-image: none !important;
+    font-family: 'Ionicons';
+    font-weight: normal;
+    font-style: normal;
+    font-size: 20px;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
+    padding-top: 2px;
+    color: #a3a3a3;
+    line-height: 20px;
+}
+
+.ef-trigger-search:after {
+    content: "\f4a5";
+}
+
+.ef-trigger-clear:after {
+    content: "\f404";
+}
+
+.ef-trigger-external-link:after {
+    content: "\f3ef";
+}

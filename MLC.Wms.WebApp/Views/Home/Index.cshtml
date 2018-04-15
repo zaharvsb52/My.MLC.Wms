@@ -1,0 +1,23 @@
+﻿@using MLC.Wms.WebApp.Common
+@section masterhead
+{
+    <script type="text/javascript" src="@Html.ResolveClientUrl("~/rpc")"></script>
+    @{
+        var appPath = PathUtility.Singleton.CommonScriptsPath;
+        var stylePath = PathUtility.Singleton.CommonStylesPath;
+        var imagePath = PathUtility.Singleton.CommonImagesPath;
+    }
+    @Html.Include(String.Format("{0}/App.js", appPath))
+    <script type="text/javascript">
+        Ext.onReady(function() {
+            MLC.wms.application = new MLC.wms.App({
+                rootpath: '@VirtualPathUtility.AppendTrailingSlash(Html.ResolveClientUrl("~").ToHtmlString())',
+                scriptspath: '@VirtualPathUtility.AppendTrailingSlash(Html.ResolveClientUrl(appPath).ToHtmlString())',
+                stylespath: '@VirtualPathUtility.AppendTrailingSlash(Html.ResolveClientUrl(stylePath).ToHtmlString())',
+                imagespath: '@VirtualPathUtility.AppendTrailingSlash(Html.ResolveClientUrl(imagePath).ToHtmlString())',
+                sessionTimeout: '@FormsAuthentication.Timeout.TotalMilliseconds',
+                productVersion: '@MvcApplication.ProductVersion'
+            });
+        });
+    </script>
+}
